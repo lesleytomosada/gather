@@ -71,9 +71,9 @@
 
 * Request shape (JSON):
     ```json
-    - gathering_name
+    - name
     - location
-    - date_time
+    - date
     ```
 
 * Response: Create a new gathering
@@ -81,12 +81,12 @@
     ```json
 	{
         "id": integer,
-        "gathering_name": string,
+        "name": string,
         "location": {
             "city": string,
             "state": string
         },
-        "date_time": datetime
+        "date": datetime
     }
     ```
 
@@ -104,12 +104,12 @@
     ```json
 	{
         "id": integer,
-        "gathering_name": string,
+        "name": string,
         "location": {
             "city": string,
             "state": string
         },
-        "date_time": datetime,
+        "date": datetime,
         "recommendation": {
             "id": integer,
             "restaurant_name": string,
@@ -194,12 +194,12 @@
         "gatherings":[
             {
                 "id": integer,
-                "gathering_name": string,
+                "name": string,
                 "location": {
                     "city": string,
                     "state": string
                 },
-                "date_time": datetime
+                "date": datetime
             }
         ]
     }
