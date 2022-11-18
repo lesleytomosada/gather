@@ -20,6 +20,23 @@ services:
       MONGODATABASE: gather
       MONGOUSER: gather
       MONGOPASSWORD: gather
+  accounts:
+    build:
+      context: ./accounts
+      dockerfile: Dockerfile.dev
+    ports:
+      - 8001:8000
+    volumes:
+      - ./accounts:/app
+    environment:
+      DATABASE_URL: mongodb://gather:gather@mongo/gather
+      #added DATABASE_NAME and WAIT_HOSTS via Learn
+      # DATABASE_NAME: gather
+      # WAIT_HOSTS: mongo:27017
+      MONGOHOST: mongo
+      MONGODATABASE: gather
+      MONGOUSER: gather
+      MONGOPASSWORD: gather
   mongo:
     image: mongo:5
     volumes:
@@ -55,4 +72,3 @@ services:
       HOST: "0.0.0.0"
       PUBLIC_URL: http://localhost:3000
       REACT_APP_SAMPLE_SERVICE_API_HOST: http://localhost:8000
-
