@@ -80,7 +80,7 @@
 * Response shape (JSON):
     ```json
 	{
-        "id": integer,
+        "id": string,
         "name": string,
         "location": {
             "city": string,
@@ -103,7 +103,7 @@
 * Response shape (JSON):
     ```json
 	{
-        "id": integer,
+        "id": string,
         "name": string,
         "location": {
             "city": string,
@@ -168,7 +168,7 @@
     ```json
 	{
         "recommendation": {
-            "id": integer,
+            "id": string,
             "restaurant_name": string,
             "address": string,
             "price": string,
@@ -193,7 +193,7 @@
 	{
         "gatherings":[
             {
-                "id": integer,
+                "id": string,
                 "name": string,
                 "location": {
                     "city": string,
