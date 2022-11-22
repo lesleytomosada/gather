@@ -3,6 +3,7 @@ import pymongo, os, bson
 from typing import List, Optional, Union
 from datetime import datetime
 from bson.objectid import ObjectId
+from .preference_queries import PreferenceOut
 
 
 dbhost = os.environ['MONGOHOST']
@@ -26,6 +27,7 @@ class GatheringOut(BaseModel):
     name: str
     location: str
     date: datetime
+    preferences: Optional[List[PreferenceOut]]
 
 
 class GatheringsOut(BaseModel):
@@ -54,5 +56,3 @@ class GatheringRepository:
             result = self.get_one(result.inserted_id)
             result['id'] = str(result['id'])
             return result
-        
-         
