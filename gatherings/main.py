@@ -16,3 +16,4 @@ app.add_middleware(
 )
 
 app.include_router(gathering.router)
+app.include_router(preference.router)
