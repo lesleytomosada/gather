@@ -1,3 +1,4 @@
+from queries.recommendation_queries import RecommendOut
 from pydantic import BaseModel
 import pymongo, os, bson
 from typing import List, Optional, Union
@@ -28,6 +29,7 @@ class GatheringOut(BaseModel):
     location: str
     date: datetime
     preferences: Optional[List[PreferenceOut]]
+    recommendation: Optional[RecommendOut]
 
 
 class GatheringsOut(BaseModel):
