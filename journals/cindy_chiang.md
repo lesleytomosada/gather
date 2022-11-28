@@ -1,3 +1,13 @@
+## November 27, 2022
+Dear Diary,
+
+Today, I worked on:
+- "Nav" component (frontend)
+
+I created the branches for the frontend components that I'll be working on (Nav, gathering form, and preference form). Hoping that the Nav component would be the simplest, I started there and added Navlinks to each of the components that we determined in our wireframe. As I was creating the links/buttons for login and signup, I think the team will need to discuss if we want to make them modals or just links that will navigate to their individual components.
+
+I'm not quite as familiar with frontend auth, so I also spent some time today re-reading the frontend auth cookbook to better understand the steps and pieces relating to frontend auth. I think once the frontend auth is completed, we'll be able to add in the code to import useToken, which will be helpful for each of our components as the majority of our application will require the user to be logged in to access features.
+
 ## November 23, 2022
 Dear Diary,
 
