@@ -1,16 +1,19 @@
-import { useEffect, useState } from 'react';
-import Construct from './Construct.js'
-import ErrorNotification from './ErrorNotification';
-import './App.css';
+import { useEffect, useState } from "react";
+import Construct from "./Construct.js";
+import ErrorNotification from "./ErrorNotification";
+import "./App.css";
+import Nav from "./Nav";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
+import React from "react";
 
 function App() {
   const [launch_info, setLaunchInfo] = useState([]);
-  const [error, setError] = useState(null);  
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function getData() {
       let url = `${process.env.REACT_APP_SAMPLE_SERVICE_API_HOST}/api/launch-details`;
-      console.log('fastapi url: ', url);
+      console.log("fastapi url: ", url);
       let response = await fetch(url);
       console.log("------- hello? -------");
       let data = await response.json();
@@ -24,14 +27,16 @@ function App() {
       }
     }
     getData();
-  }, [])
-
+  }, []);
 
   return (
-    <div>
-      <ErrorNotification error={error} />
-      <Construct info={launch_info} />
-    </div>
+    <BrowserRouter>
+      <Nav />
+      <div>
+        <ErrorNotification error={error} />
+        <Construct info={launch_info} />
+      </div>
+    </BrowserRouter>
   );
 }
 
