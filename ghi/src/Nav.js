@@ -49,7 +49,7 @@ function Nav() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/gathering">
+              <NavLink className="nav-link" to="/gathering/list">
                 List of Gatherings
               </NavLink>
             </li>
@@ -64,7 +64,7 @@ function Nav() {
               {token ? (
                 <LogoutButton />
               ) : (
-                <NavLink className="nav-link" to="/login">
+                <NavLink className="btn btn-primary" to="/login">
                   Login
                 </NavLink>
               )}
