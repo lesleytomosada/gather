@@ -1,7 +1,8 @@
 volumes:
   mongo-data:
     external: true
-
+  account-data:
+    external: true
 services:
   gatherings:
     build:
@@ -12,10 +13,8 @@ services:
     volumes:
       - ./gatherings:/app
     environment:
+      SIGNING_KEY: mangoGathering
       DATABASE_URL: mongodb://gather:gather@mongo/gather
-      #added DATABASE_NAME and WAIT_HOSTS via Learn
-      # DATABASE_NAME: gather
-      # WAIT_HOSTS: mongo:27017
       MONGOHOST: mongo
       MONGODATABASE: gather
       MONGOUSER: gather
@@ -29,20 +28,17 @@ services:
     volumes:
       - ./accounts:/app
     environment:
-      DATABASE_URL: mongodb://gather:gather@mongo/gather
-      #added DATABASE_NAME and WAIT_HOSTS via Learn
-      # DATABASE_NAME: gather
-      # WAIT_HOSTS: mongo:27017
-      MONGOHOST: mongo
-      MONGODATABASE: gather
-      MONGOUSER: gather
-      MONGOPASSWORD: gather
+      SIGNING_KEY: mangoGathering
+      DATABASE_URL: mongodb://accounts:accounts@mango/accounts
+      MONGOHOST: mango
+      MONGODATABASE: accounts
+      MONGOUSER: accounts
+      MONGOPASSWORD: accounts
   mongo:
     image: mongo:5
     volumes:
       - mongo-data:/data/db
       - ./data:/docker-entrypoint-initdb.d
-      #- transfer:/transfer:ro
     environment:
       MONGO_INITDB_ROOT_USERNAME: gather
       MONGO_INITDB_ROOT_PASSWORD: gather
@@ -56,6 +52,29 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: gather
       ME_CONFIG_MONGODB_ADMINPASSWORD: gather
       ME_CONFIG_MONGO_URL: mongodb://gather:gather@mongo:27017/
+    restart: always
+
+  mango:
+    image: mongo:5
+    ports:
+      - "27018:27017"
+    volumes:
+      - account-data:/data/db
+      - ./setup/mongodb:/docker-entrypoint-initdb.d
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: accounts
+      MONGO_INITDB_ROOT_PASSWORD: accounts
+  mango-express:
+    image: mongo-express:0.54
+    depends_on:
+      - mango
+    ports:
+      - "8082:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: accounts
+      ME_CONFIG_MONGODB_ADMINPASSWORD: accounts
+      ME_CONFIG_MONGODB_SERVER: mango
+      ME_CONFIG_MONGO_URL: mongodb://accounts:accounts@mango
     restart: always
 
   ghi:
