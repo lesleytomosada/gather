@@ -21,7 +21,7 @@ function BootstrapInput(props) {
   );
 }
 
-function AccountForm(props) {
+function LoginForm(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -79,4 +79,4 @@ function AccountForm(props) {
   );
 }
 
-export default AccountForm;
+export default LoginForm;

@@ -1,6 +1,7 @@
 ## November 28, 2022
-Running a issue, react-router-dom is not resovled, we change to ghi directory and run
-npm install react-router-dom --save to fix it
+Today we were running a issue, can't resolve react-router-dom, we did brainstorm and we change to ghi directory and run
+npm install react-router-dom --save to fix the issue!
+We also finished all our backend. We split up for the react front-end, and will have it done by this Friday
 
 
 ## November 23, 2022
