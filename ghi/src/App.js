@@ -39,13 +39,15 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="login" element={<LoginForm/>} />
-          <Route path="signup" element={<SignupForm/>} />
+          <Route path="login" element={<LoginForm />} />
+          <Route path="signup" element={<SignupForm />} />
           <Route path="gathering/">
-            <Route path="new" element={<GatheringForm/>} />
+            <Route path="new" element={<GatheringForm />} />
             <Route path="list" element={<GatheringList />} />
-          <Route path="gathering/<int:pk>" element={<GatheringDetail/>} />
-            <Route path="/preference" element={<PreferenceForm/>} />
+            <Route path="<int:pk>">
+              <Route path="" element={<GatheringDetail />} />
+              <Route path="preference" element={<PreferenceForm />} />
+            </Route>
           </Route>
         </Routes>
       </div>
