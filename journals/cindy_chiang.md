@@ -1,3 +1,16 @@
+## November 28, 2022
+Dear Diary,
+
+Today, I worked on:
+- "Login/Logout/sign-up" endpoint
+- Frontend organization
+
+The Seabeast team discussed our remaining activities (frontend, unit tests, CI/CD, README, CSS, etc.) for the project and determined a timeline/deadline for each requirement. We agreed that we wanted some buffer time to handle any issues we may face in the week before the project's due date, so we would try to have our frontend completed by the end of this week, unit tests completed by mid-next week, final touches of CSS by Friday of next week. The team also agreed to re-evaluate when to complete our CI/CD activities after we learn more about the requirements of unit tests, though we do think it could be a good idea to have the CI/CD completed sooner rather than later. We then added the remaining activities into our Issues board.
+
+The team then focused on organizing some of our frontend files to help get everyone setup for writing our assigned components. We decided to keep our App.js file to only routes, so Lesley, McKenzie, and Daisy then helped organize and create placeholders for each of the component routes and created the file system for our component files. We also added the link for Bootstrap as we anticipate using it for our CSS needs. And finally, we troubleshooted how to install react-router-dom (for the BrowserRouter) and realized that we had to change directories into our ghi directory for it to install properly and appear in the package.json file. Who knew!
+
+Finally, over the Thanksgiving break, I spent some time researching the backend auth given that we were able to create duplicate accounts in our database. In my research, I discovered the concept of creating unique indexes in our database, which would help with handling DuplicateKeyErrors. From perusing the example repositories, I was able to connect the dots and add the additional file to create unique indexes and update our Docker Compose yaml file to include the volume for the docker entrypoint init.d. After some trial and error, I also learned that the docker-entrypoint-init.d folder is only executed if the database has never been initialized before. This meant learning to remove the already created volume database and then re-creating it. And with that, we no longer have duplicate accounts! The team decided to hold-off on adding restrictions to our backend endpoints, but it'll be something we'll need to come back to in the coming week or two. Overall, a very productive day for the team!
+
 ## November 27, 2022
 Dear Diary,
 
