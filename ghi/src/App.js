@@ -43,10 +43,10 @@ function App() {
           <Route path="gathering/">
             <Route path="new" element={<GatheringForm />} />
             {/* <Route path="list" element={<GatheringList />} /> */}
-            {/* <Route path="<int:pk>">
+            <Route path="<int:pk>">
               <Route path="" element={<GatheringDetail />} />
-              <Route path="preference" element={<PreferenceForm />} />
-            </Route> */}
+              {/* <Route path="preference" element={<PreferenceForm />} /> */}
+            </Route>
           </Route>
         </Routes>
       </div>

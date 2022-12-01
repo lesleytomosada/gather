@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { State, City } from "country-state-city";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const GatheringForm = () => {
     const [name, setName] = useState("");
@@ -12,7 +12,7 @@ const GatheringForm = () => {
     const [submitted, setSubmitted] = useState(false);
     const [invalid, setInvalid] = useState(false);
 
-    // let navigate = useNavigate();
+    let navigate = useNavigate();
 
     useEffect(() => {
         function getStates() {
@@ -60,7 +60,7 @@ const GatheringForm = () => {
             setDate("");
             setSubmitted(true);
             setInvalid("");
-            // navigate(`/${newGathering.id}/`);
+            navigate(`${newGathering.id}/`);
         } else {
             setInvalid(true);
         }
@@ -151,7 +151,7 @@ const GatheringForm = () => {
                         </div>
                         <button className="btn btn-primary">Create</button>
                     </form>
-                    {invalid && (
+                    {/* {invalid && (
                         <div
                             className="alert alert-danger mb-0 p-4 mt-4"
                             id="success-message"
@@ -166,7 +166,7 @@ const GatheringForm = () => {
                         >
                             Gather round!
                         </div>
-                    )}
+                    )} */}
                 </div>
             </div>
         </div>
