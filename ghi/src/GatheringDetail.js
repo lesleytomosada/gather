@@ -42,7 +42,7 @@ const GatheringDetail = () => {
     <>
       <h1 className="display-4 fw-bold text-center">Your Gathering</h1>
         <h2>{gathering.name}</h2>
-        {new Date(gathering.date).toLocaleDateString()}&nbsp;
+        {new Date(gathering.date + 'Z').toLocaleDateString()}&nbsp;
         {new Date(gathering.date + 'Z').toLocaleTimeString()}
         <h3>{gathering.location}</h3>
         <h3>{gathering.recommendation?.restaurant_name}</h3>
