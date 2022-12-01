@@ -62,11 +62,11 @@ return(
                                 <td>{gathering.location}</td>
                                 <td>{new Date(gathering.date+"Z").toLocaleDateString()}&nbsp;
                                     {new Date(gathering.date+"Z").toLocaleTimeString()}</td>
-                                <td>{gathering.recommendation.restaurant_name}</td>
-                                <td>{gathering.recommendation.address}</td>
-                                <td>{gathering.recommendation.cuisine}</td>
-                                <td>{gathering.recommendation.rating}</td>
-                                <td>{gathering.recommendation.url}</td>
+                                <td>{gathering.recommendation?.restaurant_name}</td>
+                                <td>{gathering.recommendation?.address}</td>
+                                <td>{gathering.recommendation?.cuisine}</td>
+                                <td>{gathering.recommendation?.rating}</td>
+                                <td>{gathering.recommendation?.url}</td>
                             </tr>
                         )
                     })}
@@ -94,11 +94,11 @@ return(
                                 <td>{gathering.location}</td>
                                 <td>{new Date(gathering.date).toLocaleDateString()}&nbsp;
                                     {new Date(gathering.date).toLocaleTimeString()}</td>
-                                <td>{gathering.recommendation.restaurant_name}</td>
-                                <td>{gathering.recommendation.address}</td>
-                                <td>{gathering.recommendation.cuisine}</td>
-                                <td>{gathering.recommendation.rating}</td>
-                                <td>{gathering.recommendation.url}</td>
+                                <td>{gathering.recommendation?.restaurant_name}</td>
+                                <td>{gathering.recommendation?.address}</td>
+                                <td>{gathering.recommendation?.cuisine}</td>
+                                <td>{gathering.recommendation?.rating}</td>
+                                <td>{gathering.recommendation?.url}</td>
                             </tr>
                         )
                     })}
