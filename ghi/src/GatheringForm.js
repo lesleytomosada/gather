@@ -65,7 +65,7 @@ const GatheringForm = () => {
 
     return (
         <div className="px-4 py-5 my-1 mt-5 text-center">
-            <h1 className="display-5">Create A New Gathering</h1>
+            <h1 className="display-5">Create a New Gathering</h1>
             <p>Please provide the name, location (select state and city), date and time of your gathering</p>
             <div className="offset-2 col-8">
                 <div className="shadow p-4 mt-4">
