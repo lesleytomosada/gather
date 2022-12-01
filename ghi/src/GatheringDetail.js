@@ -1,23 +1,57 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
+
 const GatheringDetail = () => {
   const [gathering, setGathering] = useState({});
+  const [recommendation, setRecommendation] = useState({});
   const gathering_id = useParams();
+
   const navigate = useNavigate();
   const navToPreference = async () => {
-
-    navigate('/gathering/' + gathering_id['id'] + '/preference')
-
+    navigate(`/gathering/${gathering_id['id']}/preference`)
   };
+
+
+//   const getRecommendation = async(event) => {
+//     event.preventDefault();
+//     const recommendUrl = `http://localhost:8000/gathering/${gathering_id['id']}/recommend`;
+//     const fetchConfig = {
+//       method: 'post',
+//     };
+
+//     const response = await fetch(recommendUrl, fetchConfig);
+
+//     if (response.ok) {
+//       const recommendation = await response.json();
+//       setGathering(gathering)
+//     };
+//   };
+
+    const getRecommendation = async () => {
+      const recommendUrl = `http://localhost:8000/gathering/${gathering_id['id']}/recommend`;
+      const fetchConfig = {
+        method: 'post'
+      }
+      const recommendResponse = await fetch(recommendUrl, fetchConfig);
+
+      if (recommendResponse.ok) {
+        let recommendation = await recommendResponse.json();
+      }
+    }
+
+
+  useEffect(() => {
+    getRecommendation();
+    setRecommendation(recommendation)
+  }, [recommendation])
 
 
 
   useEffect(() => {
     const fetchGathering = async () => {
-      const url = 'http://localhost:8000/gathering/' + gathering_id['id'];
+      const url = `http://localhost:8000/gathering/${gathering_id['id']}`;
       const response = await fetch(url);
-
 
       if (response.ok) {
         let data = await response.json();
@@ -25,7 +59,7 @@ const GatheringDetail = () => {
       }
     }
     fetchGathering();
-  }, []);
+  }, [gathering_id]);
 
 
   return (
@@ -41,8 +75,9 @@ const GatheringDetail = () => {
         <p>
           <button onClick={navToPreference}>Add a preference</button>
         </p>
-
-
+        <p>
+          <button onClick={getRecommendation}>Get Recommendation</button>
+        </p>
     </>
   );
 };
