@@ -44,9 +44,7 @@ const PreferenceForm = () => {
     return (
         <div className="px-4 py-5 my-1 mt-5 text-center">
             <h1 className="display-5">Let's Decide Where to Eat!</h1>
-            <p>
-                Please suggest your preferred cuisine and price point
-            </p>
+            <p>Please suggest your preferred cuisine and price point</p>
             <div className="offset-2 col-8">
                 <div className="shadow p-4 mt-4">
                     <form id="add-preferences-form" onSubmit={handleSubmit}>
