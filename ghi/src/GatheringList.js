@@ -1,30 +1,27 @@
 import { useState, useEffect } from "react";
 
-// function GatheringColumn(props) {
-//   return (
-//     <div className="col">
-//       {props.list.map(data => {
-//         const gathering = data.gatherings;
-//         return (
-//           <div key={gathering.id} className="card mb-3 shadow">
-//             <div className="card-body">
-//               <h5 className="card-title">{gathering.name}</h5>
-//               <h6 className="card-subtitle mb-2 text-muted">
-//                 {gathering.location}
-//               </h6>
-//               </h6>
-//               <p className="card-text">
-//                 {gathering.date}
-//               </p>
-//             </div>
-//             <div className="card-footer">
-//             </div>
-//           </div>
-//         );
-//       })}
-//     </div>
-//   );
-// }
+function GatheringColumn(props) {
+  return (
+    <div className="col">
+      {props.list.map(data => {
+        const gathering = data.gatherings;
+        return (
+          <div key={gathering.id} className="card mb-3 shadow">
+            <div className="card-body">
+              <h5 className="card-title">{gathering.name}</h5>
+              <h6 className="card-subtitle mb-2 text-muted">
+                {gathering.location}
+              </h6>
+              <p className="card-text">
+                {gathering.date}
+              </p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 const GatheringList = () => {
     const [gatheringList, setGatheringList] = useState([]);
@@ -63,8 +60,8 @@ return(
                             <tr className="table-row" key={gathering.id}>
                                 <td>{gathering.name}</td>
                                 <td>{gathering.location}</td>
-                                <td>{new Date(gathering.date).toLocaleDateString()}&nbsp;
-                                    {new Date(gathering.date).toLocaleTimeString()}</td>
+                                <td>{new Date(gathering.date+"Z").toLocaleDateString()}&nbsp;
+                                    {new Date(gathering.date+"Z").toLocaleTimeString()}</td>
                                 <td>{gathering.recommendation.restaurant_name}</td>
                                 <td>{gathering.recommendation.address}</td>
                                 <td>{gathering.recommendation.cuisine}</td>
