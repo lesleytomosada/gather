@@ -1,17 +1,16 @@
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { cuisines } from "./Cuisines";
+// import { useAuthContext } from "wherever your code is";
 
 const PreferenceForm = () => {
     const [selectedCuisine, setSelectedCuisine] = useState("");
     const [selectedPrice, setSelectedPrice] = useState("");
-    const [submitted, setSubmitted] = useState(false);
-    const [invalid, setInvalid] = useState(false);
-    // useParams is an object with all of your parameters. Gathering_id is just one parameter within the useParams object
     const { gathering_id } = useParams();
+    // const { token } = useAuthContext();
 
-    // let navigate = useNavigate();
+    let navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -26,6 +25,7 @@ const PreferenceForm = () => {
 
         const preferenceUrl = `${process.env.REACT_APP_GATHERINGS}/gathering/${gathering_id}/preference`;
         const fetchConfig = {
+            // headers: { Authorization: `Bearer ${token}` },
             method: "post",
             body: JSON.stringify(data),
             headers: {
@@ -35,22 +35,18 @@ const PreferenceForm = () => {
 
         const response = await fetch(preferenceUrl, fetchConfig);
         if (response.ok) {
-            const newPreference = await response.json();
             setSelectedCuisine("");
             setSelectedPrice("");
-            setSubmitted(true);
-            setInvalid("");
-            // navigate(`/gathering/${gathering_id}/`);
-        } else {
-            setInvalid(true);
+            navigate(`../`);
         }
     };
 
     return (
-        <div className="row">
-            <div className="offset-3 col-6">
+        <div className="px-4 py-5 my-1 mt-5 text-center">
+            <h1 className="display-5">Let's Decide Where to Eat!</h1>
+            <p>Please suggest your preferred cuisine and price point</p>
+            <div className="offset-2 col-8">
                 <div className="shadow p-4 mt-4">
-                    <h1>Add Your Preferences</h1>
                     <form id="add-preferences-form" onSubmit={handleSubmit}>
                         <div className="form-floating mb-3">
                             <select
@@ -89,7 +85,7 @@ const PreferenceForm = () => {
                                 className="form-select"
                                 value={selectedPrice}
                             >
-                                <option>Select a Price</option>
+                                <option value="">Select a Price</option>
                                 <option value="1">$</option>
                                 <option value="2">$$</option>
                                 <option value="3">$$$</option>
@@ -98,23 +94,6 @@ const PreferenceForm = () => {
                         </div>
                         <button className="btn btn-primary">Submit</button>
                     </form>
-                    {invalid && (
-                        <div
-                            className="alert alert-danger mb-0 p-4 mt-4"
-                            id="success-message"
-                        >
-                            We need your input! Please complete the required
-                            fields.
-                        </div>
-                    )}
-                    {!invalid && submitted && (
-                        <div
-                            className="alert alert-success mb-0 p-4 mt-4"
-                            id="success-message"
-                        >
-                            Thank you! See you at the gathering!
-                        </div>
-                    )}
                 </div>
             </div>
         </div>
