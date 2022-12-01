@@ -1,29 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-function BootstrapInput(props) {
-  const { id, placeholder, labelText, value, onChange, type } = props;
-
-  return (
-    <div className="mb-3">
-      <label htmlFor={id} className="form-label">
-        {labelText}
-      </label>
-      <input
-        value={value}
-        onChange={onChange}
-        required
-        type={type}
-        className="form-control"
-        id={id}
-        placeholder={placeholder}
-      ></input>
-    </div>
-  );
-}
-
-function LoginForm(props) {
+function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const clearState = () => {
+    setEmail('');
+    setPassword('');
+    setSubmitted(true);
+  };
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -32,7 +18,10 @@ function LoginForm(props) {
       password: password,
     };
     const json = JSON.stringify(data);
-    const customerURL = "http://localhost:8001/docs/";
+    console.log(json)
+
+    const customerURL = `${process.env.REACT_APP_ACCOUNTS}/token/`;
+
     const fetchConfig = {
       method: "post",
       body: json,
@@ -41,42 +30,61 @@ function LoginForm(props) {
       },
     };
     const response = await fetch(customerURL, fetchConfig);
+    console.log(response)
     if (response.ok) {
-      const newCustomer = await response.json();
-      setEmail("");
-      setPassword("");
+      e.target.reset();
+      clearState();
     }
   }
 
   return (
-    <form>
-      <BootstrapInput
-        id="email"
-        placeholder="name@example.com"
-        labelText="your email address"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        type="email"
-      />
-      <BootstrapInput
-        id="password"
-        placeholder="password"
-        labelText="your password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        type="password"
-      />
-
-      <button
-        value={handleSubmit}
-        onChange={(e) => handleSubmit(e.target.value)}
-        type="submit"
-        className="btn btn-primary"
-      >
-        Submit
-      </button>
-    </form>
+    <div className="row">
+      <div className="offset-3 col-6">
+        <div className="shadow p-4 mt-4">
+          <h1 className="text-center">Login</h1>
+          <form id="create-appointment-form" onSubmit={handleSubmit}>
+            <div className="form-floating mb-3">
+              <input
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="name@example.com"
+                required
+                type="text"
+                name="email"
+                id="email"
+                className="form-control"
+              />
+              <label htmlFor="email">Email</label>
+            </div>
+            <div className="form-floating mb-3">
+              <input
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="password"
+                required
+                type="password"
+                name="password"
+                id="password"
+                className="form-control"
+              />
+              <label htmlFor="password">Password</label>
+            </div>
+            <div className="col text-center">
+              <button className="btn btn-primary">Login</button>
+            </div>
+          </form>
+          {submitted && (
+            <div
+              className="alert alert-success mb-0 p-4 mt-4"
+              id="success-message"
+            >
+              Your appointment has been created!
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
   );
+
+
 }
 
 export default LoginForm;
