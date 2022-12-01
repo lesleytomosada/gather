@@ -6,7 +6,7 @@ import GatheringDetail from './GatheringDetail';
 import GatheringForm from './GatheringForm';
 import GatheringList from './GatheringList';
 import PreferenceForm from './PreferenceForm';
-import MainPage from './MainPage';
+// import MainPage from './MainPage';
 import './App.css';
 
 function App() {
@@ -38,7 +38,7 @@ function App() {
       <Nav />
       <div className="container">
         <Routes>
-          <Route path="/" element={<MainPage />} />
+          {/* <Route path="/" element={<MainPage />} /> */}
           <Route path="login" element={<LoginForm />} />
           <Route path="signup" element={<SignupForm />} />
           <Route path="gathering/">
