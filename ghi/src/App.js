@@ -12,7 +12,7 @@ import "./App.css";
 function App() {
   return (
     <BrowserRouter>
-      {/* <Nav /> */}
+      <Nav />
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
@@ -27,7 +27,7 @@ function App() {
             </Route>
           </Route>
         </Routes>
-      </div>
+      </div> */}
     </BrowserRouter>
   );
 }
