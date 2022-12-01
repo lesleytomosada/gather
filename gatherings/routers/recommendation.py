@@ -20,7 +20,6 @@ router = APIRouter()
 @router.post("/gathering/{gathering_id}/recommend", response_model=RecommendOut)
 def create_recommendation(
     gathering_id: str,
-    recommend: RecommendIn,
     queries: RecommendQueries = Depends(),
     repo: GatheringRepository = Depends(),
 ):
