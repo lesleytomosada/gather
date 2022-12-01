@@ -1,3 +1,16 @@
+## November 29, 2022
+Dear Diary,
+
+Today, I worked on:
+- "Gathering form" component (frontend)
+- "Preference form" component (frontend)
+
+The Seabeast team discussed our timeline and agreed to begin CI/CD tomorrow or Thursday after having a chance to review the updated CI/CD cookbook guide. For today, we agreed to focus our energy in working on our individual components and were still open to helping troubleshoot if anyone ran into any issues.
+
+I started working on the create a gathering form and tried to use an autocomplete resource for our location field (to help populate city name and state). Upon some additional research, I learned that that resource utilized the MapBox API and would end up having a limit and potential fees. I brought this up to the team and we ultimately decided to find another resource to help populate city and state (to reduce any errors of inputting the location of the gathering, which is a search parameter in our Yelp API call). I discovered a country-state-city package on NPM that would be able to help populate the states and cities within each state. I read the docs for this package, but ran into a few bumps in implementing the resource. After fixing some typos and realizing that I could write another function to then trigger populating the cities within the states, I was successful in getting a dropdown of states and cities! I did notice that within the list of cities, this package included counties, so I filtered the data to handle some potential edge cases. In testing this component, I discovered that I was having some issues in getting a restaurant recommendation and realized that it might have something to do with time. From the form, it was setting the gathering to local time (PST). However, in the database, it was using that time, but setting it to a GMT timezone, which then created some issues in finding a restaurant that was open. I managed to find some docs on converting our date/time field into an ISOString to handle this. Tomorrow, I'll plan to discuss with the team if the user experience might be better if we navigate to the gathering details following a successful submit (rather than a success message).
+
+After finishing the gather form, I switched gears and setup the framework of the preference form. I did a little bit of review on how to hardcode the option tags for our price selection (since there are only 4). However, with our cuisine choices, since the list was longer, I decided to create a Cuisines.js file. I was then able toimport the file to utilize within the preference form to iterate over the list of cuisine choices. Because we needed to insert our gathering id into the url path, I did some initial research and learned about useParams. I was surprised to learn that this function is helpful in getting the gathering id, which was passed as a parameter in the url path. McKenzie had discovered how to use it in her component and was a helpful guidance when I began working on the preference form. There's still a little bit more to go, but I'll pick this back up tomorrow!
+
 ## November 28, 2022
 Dear Diary,
 
