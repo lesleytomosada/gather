@@ -8,11 +8,11 @@ const GatheringDetail = () => {
 
   const navigate = useNavigate();
   const navToPreference = async () => {
-    navigate(`/gathering/${gathering_id['id']}/preference`)
+    navigate(`/gathering/${gathering_id['gathering_id']}/preference`)
   };
 
     const getRecommendation = async () => {
-      const recommendUrl = `http://localhost:8000/gathering/${gathering_id['id']}/recommend`;
+      const recommendUrl = `http://localhost:8000/gathering/${gathering_id['gathering_id']}/recommend`;
       const fetchConfig = {
         method: 'post'
       }
@@ -26,7 +26,7 @@ const GatheringDetail = () => {
 
   useEffect(() => {
     const fetchGathering = async () => {
-      const url = `http://localhost:8000/gathering/${gathering_id['id']}`;
+      const url = `http://localhost:8000/gathering/${gathering_id['gathering_id']}`;
       const response = await fetch(url);
 
       if (response.ok) {
