@@ -1,3 +1,4 @@
+from authenticator import authenticator
 from fastapi import APIRouter, Depends, Response
 from typing import List, Optional, Union
 from queries.preference_queries import(
@@ -13,5 +14,6 @@ def create_Preference(
     preference: PreferenceIn,
     gathering_id: str,
     repo: PreferenceRepository = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     return repo.set_preference(gathering_id, preference)
