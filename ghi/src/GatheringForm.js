@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { State, City } from "country-state-city";
 import { useNavigate } from "react-router-dom";
+// import { useAuthContext } from "wherever your code is";
 
 const GatheringForm = () => {
     const [name, setName] = useState("");
@@ -9,8 +10,7 @@ const GatheringForm = () => {
     const [cities, setCities] = useState([]);
     const [selectedCity, setSelectedCity] = useState("");
     const [date, setDate] = useState("");
-    const [submitted, setSubmitted] = useState(false);
-    const [invalid, setInvalid] = useState(false);
+    // const { token } = useAuthContext();
 
     let navigate = useNavigate();
 
@@ -44,6 +44,7 @@ const GatheringForm = () => {
 
         const gatheringUrl = `${process.env.REACT_APP_GATHERINGS}/gathering`;
         const fetchConfig = {
+            // headers: { Authorization: `Bearer ${token}` },
             method: "post",
             body: JSON.stringify(data),
             headers: {
@@ -58,19 +59,16 @@ const GatheringForm = () => {
             setSelectedState("");
             setSelectedCity("");
             setDate("");
-            setSubmitted(true);
-            setInvalid("");
             navigate(`../${newGathering.id}/`);
-        } else {
-            setInvalid(true);
         }
     };
 
     return (
-        <div className="row">
-            <div className="offset-3 col-6">
+        <div className="px-4 py-5 my-1 mt-5 text-center">
+            <h1 className="display-5">Create A New Gathering</h1>
+            <p>Please provide the name, location (select state and city), date and time of your gathering</p>
+            <div className="offset-2 col-8">
                 <div className="shadow p-4 mt-4">
-                    <h1>New Gathering</h1>
                     <form
                         id="create-new-gathering-form"
                         onSubmit={handleSubmit}
@@ -151,22 +149,6 @@ const GatheringForm = () => {
                         </div>
                         <button className="btn btn-primary">Create</button>
                     </form>
-                    {/* {invalid && (
-                        <div
-                            className="alert alert-danger mb-0 p-4 mt-4"
-                            id="success-message"
-                        >
-                            You have an invalid location. Try again.
-                        </div>
-                    )}
-                    {!invalid && submitted && (
-                        <div
-                            className="alert alert-success mb-0 p-4 mt-4"
-                            id="success-message"
-                        >
-                            Gather round!
-                        </div>
-                    )} */}
                 </div>
             </div>
         </div>
