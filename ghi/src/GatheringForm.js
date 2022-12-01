@@ -60,7 +60,7 @@ const GatheringForm = () => {
             setDate("");
             setSubmitted(true);
             setInvalid("");
-            navigate(`${newGathering.id}/`);
+            navigate(`../${newGathering.id}/`);
         } else {
             setInvalid(true);
         }
