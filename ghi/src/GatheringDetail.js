@@ -1,6 +1,26 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
+<<<<<<< HEAD
+const GatheringDetail = () => {
+  const [gathering, setGathering] = useState({});
+  const gathering_id = useParams();
+  const navigate = useNavigate();
+  const navToPreference = async () => {
+
+    navigate('/gathering/' + gathering_id['id'] + '/preference')
+
+  };
+
+
+
+  useEffect(() => {
+    const fetchGathering = async () => {
+      const url = 'http://localhost:8000/gathering/' + gathering_id['id'];
+      const response = await fetch(url);
+
+
+=======
 
 const GatheringDetail = () => {
   const [gathering, setGathering] = useState({});
@@ -30,13 +50,18 @@ const GatheringDetail = () => {
       const url = `http://localhost:8000/gathering/${gathering_id['id']}`;
       const response = await fetch(url);
 
+>>>>>>> main
       if (response.ok) {
         let data = await response.json();
         setGathering(data)
       }
     }
     fetchGathering();
+<<<<<<< HEAD
+  }, []);
+=======
   }, [gathering_id]);
+>>>>>>> main
 
 
   return (
@@ -52,9 +77,14 @@ const GatheringDetail = () => {
         <p>
           <button onClick={navToPreference}>Add a preference</button>
         </p>
+<<<<<<< HEAD
+
+
+=======
         <p>
           <button onClick={getRecommendation}>Get Recommendation</button>
         </p>
+>>>>>>> main
     </>
   );
 };
