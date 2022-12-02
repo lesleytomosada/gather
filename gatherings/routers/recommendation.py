@@ -1,3 +1,4 @@
+from authenticator import authenticator
 from fastapi import APIRouter, Depends, Response
 from typing import List, Optional, Union
 from queries.recommendation_queries import(
@@ -20,9 +21,9 @@ router = APIRouter()
 @router.post("/gathering/{gathering_id}/recommend", response_model=RecommendOut)
 def create_recommendation(
     gathering_id: str,
-    # recommend: RecommendIn,
     queries: RecommendQueries = Depends(),
     repo: GatheringRepository = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     gathering = repo.get_one(gathering_id)
     preferences = gathering["preferences"]

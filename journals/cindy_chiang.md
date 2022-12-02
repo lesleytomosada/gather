@@ -1,3 +1,32 @@
+## December 1, 2022
+Dear Diary,
+
+Today, I worked on:
+- "Gathering Details" component (frontend)
+- Backend authorization
+- Frontend authorization
+
+The Seabeast team worked as a group today. McKenzie had been working on the "Gathering Details" component and we joined her on troubleshooting how to make our fetch to the fastAPI endpoint to make a restaurant recommendation. We first identified that even though we were trying to get a recommendation, it's actually creating a recommendation, which would be a POST method. We were getting some errors and Lesley pointed out that because the logic of making a restaurant recommendation is handled in the backend, our fetch to the endpoint didn't need the typical framework we had been seeing when setting up a POST fetch. Tied to that matter, we also learned that we didn't need to pass the object of a recommendation in our router (to create a restaurant recommendation). This helped solve our errors and we were then successful in getting the restaurant recommendation to render on our page! We continued to troubleshoot how to get another restaurant recommendation on another click. We figured out a solution to handle that, but may come back to this to refactor our code to better manage state.
+
+In the afternoon, the team decided to tackle backend authorization and wrap up this requirement with restricting our endpoints. We made sure to include the additional code in our accounts router file to get tokens from HTTP-only cookies, as it'll be an important piece in our frontend authorization. Then we added another authentication.py file in our gatherings microservice so that logged in users would have access to our restricted endpoints. We gathered that we would need the authenticator class for our injected dependencies of the restricted endpoints. We updated our requirements file with jwtdown and also updated our fastAPI version and added the signing key to our docker compose yaml file. All of these updates resulted in a smooth result of implementing and completing our backend auth!
+
+We then decided to continue on the auth train and begin our frontend authorization. Daisy was a champ and helped drive as we navigated this requirement. We first added a new file that included the useToken hook and context provider. We went through the code and updated it to reflect the appropriate url endpoints and parameters as necessary. We also added the additional code in our app.js file to import the AuthProvider. We also decided to first test our login component and added the additional code to connect the token to our login page. We gave it try and found some errors relating to useNavigate and needed to be part of a router. We'll need to further look into this. Even though we weren't successful on our first try, we did manage to get the token on our frontend! We'll plan to pick this back up tomorrow.
+
+## November 30, 2022
+Dear Diary,
+
+Today, I worked on:
+- Frontend auth
+- "Gathering form" component (frontend)
+- "Preference form" component (frontend)
+- "Nav" component (frontend)
+
+The Seabeast team paired program today - I worked with Daisy to review the cookbook guide and understand next steps with frontend authorization. Based on our readings, we learned that we needed to create a file that would include the code for the useToken hook and context provider, which will be helpful in getting the token from our backend/fastAPI and ultimately used for our login, logout, signup, and react components. We decided to regroup with the team to build the file together as we'll all need access to it in order to incorporate authorization in each of our react components.
+
+When we regrouped with the team, Lesley and McKenzie were working to debug an issue we were getting with the rendering the time in our react components. We would create a gathering in our local time (PST), our database (MongoDB) showed the time in GMT/UTC, but when we tried to convert it to local time via the `toLocaleTimeString()` method, we were getting an incorrect rendering of the time. We spent some time debugging and after a few hours of research, we ultimately discovered that we needed to add a "Z" to the date/time string. As it turns out, pymongo stores the time without a timezone (ie. naive time), despite the database showing that it was in GMT/UTC. Thus, when we were getting the time from the database and converting it to local time, it was miscalculating it. By adding the "Z", it acknowledged the time as GMT and made a successful time conversion!
+
+Afterwards, we worked on our individual components. I continued to work on the gathering and preference forms and updated it to navigate to the gathering details page upon a successful sumission, which could help create a nicer user experience. I also updated the nav component to handle showing additional navlinks when a user is logged in versus logged out. Based on my review with Daisy earlier in the day on frontend authorization, I went ahead and put some placeholder code for authorization in each of my components (commented them out for the time being).
+
 ## November 29, 2022
 Dear Diary,
 

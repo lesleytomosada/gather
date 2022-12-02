@@ -1,3 +1,4 @@
+from authenticator import authenticator
 from fastapi import APIRouter, Depends, Response
 from typing import List, Optional, Union
 from queries.gathering_queries import(
@@ -13,6 +14,7 @@ router = APIRouter()
 def create_gathering(
     gathering: GatheringIn,
     repo: GatheringRepository = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     return repo.create(gathering)
 
@@ -20,6 +22,7 @@ def create_gathering(
 @router.get("/gathering", response_model=GatheringsOut)
 def get_all_gatherings(
     repo: GatheringRepository = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     return GatheringsOut(gatherings=repo.get_all())
 
@@ -29,6 +32,7 @@ def get_one_gathering(
     gathering_id: str,
     response: Response,
     repo: GatheringRepository = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     gathering = repo.get_one(gathering_id)
     if gathering is None:
