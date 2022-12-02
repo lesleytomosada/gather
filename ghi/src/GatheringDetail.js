@@ -21,6 +21,7 @@ const GatheringDetail = () => {
       if (recommendResponse.ok) {
         let recommendation = await recommendResponse.json();
         window.location.reload(false);
+        console.log(recommendation)
       }
     }
 
