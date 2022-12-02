@@ -31,7 +31,7 @@ class HttpError(BaseModel):
 router = APIRouter()
 
 
-@router.post("/gather/accounts", response_model=AccountToken | HttpError)
+@router.post("/gathering/accounts", response_model=AccountToken | HttpError)
 async def create_account(
     info: AccountIn,
     request: Request,
