@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useAuthContext } from "./auth";
 
 function GatheringColumn(props) {
   return (
@@ -25,11 +26,14 @@ function GatheringColumn(props) {
 
 const GatheringList = () => {
     const [gatheringList, setGatheringList] = useState([]);
+    const { token } = useAuthContext();
 
     useEffect(() => {
         async function fetchGatheringList(){
             const url = "http://localhost:8000/gathering"
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                Authorization: `Bearer ${token}`,
+            });
             if (response.ok){
                 const data = await response.json();
                 setGatheringList(data.gatherings);
@@ -40,9 +44,9 @@ const GatheringList = () => {
 if (gatheringList.length>0){
 return(
     <div>
-        
+
         <h1>Upcoming Gatherings</h1>
-            
+
             <table className = "table table-striped mt-4 table-hover">
                 <thead>
                     <tr>

@@ -20,7 +20,7 @@ function LoginForm() {
     e.preventDefault();
     login(email, password);
     clearState();
-    navigate("../signup");
+    navigate("/");
   }
 
   return (

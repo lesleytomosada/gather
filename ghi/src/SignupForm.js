@@ -19,7 +19,7 @@ function SignupForm() {
   async function handleSubmit(e) {
     e.preventDefault();
     signup(email, password);
-    navigate("../login");
+    navigate("/");
     clearState();
   }
 

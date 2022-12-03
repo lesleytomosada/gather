@@ -2,13 +2,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { cuisines } from "./Cuisines";
-// import { useAuthContext } from "./auth";
+import { useAuthContext } from "./auth";
 
 const PreferenceForm = () => {
     const [selectedCuisine, setSelectedCuisine] = useState("");
     const [selectedPrice, setSelectedPrice] = useState("");
     const { gathering_id } = useParams();
-    // const { token } = useAuthContext();
+    const { token } = useAuthContext();
 
     let navigate = useNavigate();
 
@@ -29,7 +29,7 @@ const PreferenceForm = () => {
             body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json",
-                // Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${token}`,
             },
         };
 

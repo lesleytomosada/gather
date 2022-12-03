@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { State, City } from "country-state-city";
 import { useNavigate } from "react-router-dom";
-// import { useAuthContext } from "./auth";
+import { useAuthContext } from "./auth";
 
 const GatheringForm = () => {
     const [name, setName] = useState("");
@@ -10,7 +10,7 @@ const GatheringForm = () => {
     const [cities, setCities] = useState([]);
     const [selectedCity, setSelectedCity] = useState("");
     const [date, setDate] = useState("");
-    // const { token } = useAuthContext();
+    const { token } = useAuthContext();
 
     let navigate = useNavigate();
 
@@ -50,7 +50,7 @@ const GatheringForm = () => {
             body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json",
-                // Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${token}`,
             },
         };
 

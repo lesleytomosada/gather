@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useAuthContext } from "./auth";
 
 
 const GatheringDetail = () => {
   const [gathering, setGathering] = useState({});
   const { gathering_id } = useParams();
-
+  const { token } = useAuthContext();
 
   const navigate = useNavigate();
   const navToPreference = async () => {
@@ -16,8 +17,9 @@ const GatheringDetail = () => {
       const recommendUrl = `http://localhost:8000/gathering/$${gathering_id}/recommend`;
       console.log(recommendUrl)
       const fetchConfig = {
-        method: 'post'
-      }
+          Authorization: `Bearer ${token}`,
+          method: "post",
+      };
       const recommendResponse = await fetch(recommendUrl, fetchConfig);
 
       if (recommendResponse.ok) {
