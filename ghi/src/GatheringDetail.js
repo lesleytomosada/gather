@@ -14,11 +14,11 @@ const GatheringDetail = () => {
   };
 
     const getRecommendation = async () => {
-      const recommendUrl = `http://localhost:8000/gathering/$${gathering_id}/recommend`;
+      const recommendUrl = `http://localhost:8000/gathering/${gathering_id}/recommend`;
       console.log(recommendUrl)
       const fetchConfig = {
-          headers: { Authorization: `Bearer ${token}` },
           method: "post",
+          headers: { Authorization: `Bearer ${token}` },
       };
       const recommendResponse = await fetch(recommendUrl, fetchConfig);
 
@@ -33,7 +33,9 @@ const GatheringDetail = () => {
     const fetchGathering = async () => {
       const url = `http://localhost:8000/gathering/${gathering_id}`;
       console.log(url)
-      const response = await fetch(url);
+      const response = await fetch(url, {
+          headers: { Authorization: `Bearer ${token}` },
+      });
 
       if (response.ok) {
         let data = await response.json();
@@ -41,7 +43,7 @@ const GatheringDetail = () => {
       }
     }
     fetchGathering();
-  }, [gathering_id]);
+  }, [gathering_id, token]);
 
 
   return (
