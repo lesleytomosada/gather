@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-// import { useToken, useAuthContext } from "./auth";
+import { useToken, useAuthContext } from "./auth";
 
 function LogoutButton() {
-    // const [token, _login, logout] = useToken();
-    const logout = () => {};
+    const [token, _login, logout] = useToken();
+    // const logout = () => {};
     return (
         <div className="buttons">
             <button onClick={logout} className="btn btn-outline-primary">
@@ -15,8 +15,8 @@ function LogoutButton() {
 }
 
 function Nav() {
-    const token = false;
-    // const { token } = useAuthContext();
+    // const token = false;
+    const { token } = useAuthContext();
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
