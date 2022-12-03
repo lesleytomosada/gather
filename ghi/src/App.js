@@ -17,24 +17,30 @@ function GetToken() {
 
 function App() {
   return (
-    <BrowserRouter>
-      <Nav />
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="login" element={<LoginForm />} />
-          <Route path="signup" element={<SignupForm />} />
-          <Route path="gathering/">
-            <Route path="new" element={<GatheringForm />} />
-            <Route path="list" element={<GatheringList />} />
-            <Route path=":gathering_id">
-              <Route path="" element={<GatheringDetail />} />
-              <Route path="preference" element={<PreferenceForm />} />
-            </Route>
-          </Route>
-        </Routes>
-      </div>
-    </BrowserRouter>
+      <BrowserRouter>
+          <AuthProvider>
+              <GetToken />
+              <Nav />
+              <div className="container">
+                  <Routes>
+                      <Route path="/" element={<MainPage />} />
+                      <Route path="login" element={<LoginForm />} />
+                      <Route path="signup" element={<SignupForm />} />
+                      <Route path="gathering/">
+                          <Route path="new" element={<GatheringForm />} />
+                          <Route path="list" element={<GatheringList />} />
+                          <Route path=":gathering_id">
+                              <Route path="" element={<GatheringDetail />} />
+                              <Route
+                                  path="preference"
+                                  element={<PreferenceForm />}
+                              />
+                          </Route>
+                      </Route>
+                  </Routes>
+              </div>
+          </AuthProvider>
+      </BrowserRouter>
   );
 }
 

@@ -32,7 +32,7 @@ const GatheringList = () => {
         async function fetchGatheringList(){
             const url = "http://localhost:8000/gathering"
             const response = await fetch(url, {
-                Authorization: `Bearer ${token}`,
+                headers: { Authorization: `Bearer ${token}` },
             });
             if (response.ok){
                 const data = await response.json();

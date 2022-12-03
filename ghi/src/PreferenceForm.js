@@ -28,8 +28,8 @@ const PreferenceForm = () => {
             method: "post",
             body: JSON.stringify(data),
             headers: {
-                "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
             },
         };
 

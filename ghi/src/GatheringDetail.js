@@ -17,7 +17,7 @@ const GatheringDetail = () => {
       const recommendUrl = `http://localhost:8000/gathering/$${gathering_id}/recommend`;
       console.log(recommendUrl)
       const fetchConfig = {
-          Authorization: `Bearer ${token}`,
+          headers: { Authorization: `Bearer ${token}` },
           method: "post",
       };
       const recommendResponse = await fetch(recommendUrl, fetchConfig);
