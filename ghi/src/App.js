@@ -10,6 +10,10 @@ import MainPage from './MainPage';
 import "./App.css";
 import { AuthProvider, useToken } from "./auth";
 
+
+  const domain = /https:\/\/[^/]+/;
+  const basename = process.env.PUBLIC_URL.replace(domain, '');
+
 function GetToken() {
   useToken();
   return null;
@@ -17,7 +21,7 @@ function GetToken() {
 
 function App() {
   return (
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
           <AuthProvider>
               <GetToken />
               <Nav />
