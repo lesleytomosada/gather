@@ -30,7 +30,7 @@ const GatheringList = () => {
 
     useEffect(() => {
         async function fetchGatheringList(){
-            const url = "http://localhost:8000/gathering"
+            const url = `${process.env.REACT_APP_GATHERINGS}/gathering/`
             const response = await fetch(url, {
                 headers: { Authorization: `Bearer ${token}` },
             });

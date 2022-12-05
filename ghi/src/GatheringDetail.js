@@ -14,7 +14,7 @@ const GatheringDetail = () => {
   };
 
     const getRecommendation = async () => {
-      const recommendUrl = `http://localhost:8000/gathering/${gathering_id}/recommend`;
+      const recommendUrl = `${process.env.REACT_APP_GATHERINGS}/gathering/${gathering_id}/recommend`;
       console.log(recommendUrl)
       const fetchConfig = {
           method: "post",
@@ -31,7 +31,7 @@ const GatheringDetail = () => {
 
   useEffect(() => {
     const fetchGathering = async () => {
-      const url = `http://localhost:8000/gathering/${gathering_id}`;
+      const url = `${process.env.REACT_APP_GATHERINGS}/gathering/${gathering_id}`;
       console.log(url)
       const response = await fetch(url, {
           headers: { Authorization: `Bearer ${token}` },
