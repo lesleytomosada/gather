@@ -9,13 +9,13 @@ from queries.recommendation_queries import(
 from queries.gathering_queries import(
     GatheringRepository,
 )
-from .keys import YELP_API_KEY
+import os
 import requests
 import json
 import random
 import time
 
-
+YELP_API_KEY = os.environ["YELP_API_KEY"]
 router = APIRouter()
 
 @router.post("/gathering/{gathering_id}/recommend", response_model=RecommendOut)
@@ -35,7 +35,7 @@ def create_recommendation(
     params = {
         "location": gathering["location"],
         "categories": cuisines,
-        "open_at": int(time.mktime(gathering["date"].timetuple())),
+        
         "price": min_price
     }
     url = "https://api.yelp.com/v3/businesses/search"

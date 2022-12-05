@@ -13,6 +13,7 @@ services:
     volumes:
       - ./gatherings:/app
     environment:
+      YELP_API_KEY: ${YELP_API_KEY}
       SIGNING_KEY: mangoGathering
       DATABASE_URL: mongodb://gather:gather@mongo/gather
       MONGOHOST: mongo
