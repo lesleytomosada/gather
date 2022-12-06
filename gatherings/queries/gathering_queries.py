@@ -1,6 +1,7 @@
 from queries.recommendation_queries import RecommendOut
 from pydantic import BaseModel
-import pymongo, os
+import pymongo
+import os
 from typing import List, Optional
 from datetime import datetime
 from bson.objectid import ObjectId

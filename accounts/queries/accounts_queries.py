@@ -1,6 +1,7 @@
 from pydantic import BaseModel
-from typing import List, Optional, Union
-import pymongo, os
+from typing import Optional
+import pymongo
+import os
 from pymongo.errors import DuplicateKeyError
 
 

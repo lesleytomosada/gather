@@ -1,5 +1,6 @@
 from pydantic import BaseModel
-import pymongo, os
+import pymongo
+import os
 from bson.objectid import ObjectId
 
 
