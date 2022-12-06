@@ -1,14 +1,13 @@
 from pydantic import BaseModel
 from typing import List, Optional, Union
-import pymongo, os, bson
+import pymongo, os
 from pymongo.errors import DuplicateKeyError
-from bson.objectid import ObjectId
 
 
-dbhost = os.environ['MONGOHOST']
-dbname = os.environ['MONGODATABASE']
-dbuser = os.environ['MONGOUSER']
-dbpass = os.environ['MONGOPASSWORD']
+dbhost = os.environ["MONGOHOST"]
+dbname = os.environ["MONGODATABASE"]
+dbuser = os.environ["MONGOUSER"]
+dbpass = os.environ["MONGOPASSWORD"]
 
 mongo_str = f"mongodb://{dbuser}:{dbpass}@{dbhost}"
 
@@ -20,21 +19,25 @@ class Account(BaseModel):
     email: str
     hashed_password: str
 
+
 class AccountIn(BaseModel):
     email: str
     password: str
+
 
 class AccountOut(BaseModel):
     id: str
     email: str
 
+
 class DuplicateAccountError(ValueError):
     pass
 
+
 class AccountRepository:
-    def get_one(self, email:str) -> Optional[Account]:
+    def get_one(self, email: str) -> Optional[Account]:
         db = client[dbname]
-        result = db.accounts.find_one({"email" : email})
+        result = db.accounts.find_one({"email": email})
         if result:
             result["id"] = str(result["_id"])
         return Account(**result)
@@ -43,10 +46,10 @@ class AccountRepository:
         db = client[dbname]
         props = account.dict()
         props["hashed_password"] = hashed_password
-        props.pop('password')
+        props.pop("password")
         try:
             db.accounts.insert_one(props)
         except DuplicateKeyError:
             raise DuplicateAccountError()
-        props["id"] =str(props["_id"])
+        props["id"] = str(props["_id"])
         return Account(**props)

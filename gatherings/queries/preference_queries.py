@@ -1,13 +1,13 @@
 from pydantic import BaseModel
-import pymongo, os, bson
+import pymongo, os
 from typing import List, Optional, Union
 from bson.objectid import ObjectId
 
 
-dbhost = os.environ['MONGOHOST']
-dbname = os.environ['MONGODATABASE']
-dbuser = os.environ['MONGOUSER']
-dbpass = os.environ['MONGOPASSWORD']
+dbhost = os.environ["MONGOHOST"]
+dbname = os.environ["MONGODATABASE"]
+dbuser = os.environ["MONGOUSER"]
+dbpass = os.environ["MONGOPASSWORD"]
 
 mongo_str = f"mongodb://{dbuser}:{dbpass}@{dbhost}"
 
@@ -24,9 +24,10 @@ class PreferenceOut(BaseModel):
     cuisine: str
 
 
-
 class PreferenceRepository:
-    def set_preference(self, gathering_id, preference: PreferenceIn) -> PreferenceOut:
+    def set_preference(
+        self, gathering_id, preference: PreferenceIn
+    ) -> PreferenceOut:
         db = client[dbname]
         filter = {"_id": ObjectId(gathering_id)}
         new_preference = {"$push": {"preferences": preference.dict()}}

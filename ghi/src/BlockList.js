@@ -13,5 +13,5 @@ export const blockList = [
     "Puerto Rico",
     "United States Minor Outlying Islands",
     "United States Virgin Islands",
-    "Wake Island"
+    "Wake Island",
 ];

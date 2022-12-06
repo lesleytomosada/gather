@@ -1,16 +1,16 @@
 from queries.recommendation_queries import RecommendOut
 from pydantic import BaseModel
-import pymongo, os, bson
-from typing import List, Optional, Union
+import pymongo, os
+from typing import List, Optional
 from datetime import datetime
 from bson.objectid import ObjectId
 from .preference_queries import PreferenceOut
 
 
-dbhost = os.environ['MONGOHOST']
-dbname = os.environ['MONGODATABASE']
-dbuser = os.environ['MONGOUSER']
-dbpass = os.environ['MONGOPASSWORD']
+dbhost = os.environ["MONGOHOST"]
+dbname = os.environ["MONGODATABASE"]
+dbuser = os.environ["MONGOUSER"]
+dbpass = os.environ["MONGOPASSWORD"]
 
 mongo_str = f"mongodb://{dbuser}:{dbpass}@{dbhost}"
 
@@ -37,24 +37,29 @@ class GatheringsOut(BaseModel):
 
 
 class GatheringRepository:
-    def get_one(self, gathering_id):
+    def get_one(self, gathering_id, owner_id):
         db = client[dbname]
-        result = db.gatherings.find_one({"_id" : ObjectId(gathering_id)})
+        result = db.gatherings.find_one({"_id": ObjectId(gathering_id)})
         if result:
             result["id"] = str(result["_id"])
+            if result["owner_id"] != owner_id:
+                return None
         return result
 
-    def get_all(self):
+    def get_all(self, owner_id):
         db = client[dbname]
-        result = list(db.gatherings.find())
+        filter = {"owner_id": owner_id}
+        result = list(db.gatherings.find(filter))
         for value in result:
             value["id"] = str(value["_id"])
         return result
 
-    def create(self, data):
+    def create(self, data, owner_id):
         db = client[dbname]
-        result = db.gatherings.insert_one(data.dict())
+        props = data.dict()
+        props["owner_id"] = owner_id
+        result = db.gatherings.insert_one(props)
         if result.inserted_id:
-            result = self.get_one(result.inserted_id)
-            result['id'] = str(result['id'])
+            result = self.get_one(result.inserted_id, owner_id)
+            result["id"] = str(result["id"])
             return result

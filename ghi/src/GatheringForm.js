@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { State, City } from "country-state-city";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "./auth";
-import { blockList } from "./BlockList"
+import { blockList } from "./BlockList";
 
 const GatheringForm = () => {
     const [name, setName] = useState("");
@@ -18,8 +18,10 @@ const GatheringForm = () => {
     useEffect(() => {
         function getStates() {
             const countryCode = "US";
-            const allStates = State.getStatesOfCountry(countryCode)
-            const states = allStates.filter((state) => !blockList.includes(state.name));
+            const allStates = State.getStatesOfCountry(countryCode);
+            const states = allStates.filter(
+                (state) => !blockList.includes(state.name)
+            );
             setStates(states);
         }
         getStates();

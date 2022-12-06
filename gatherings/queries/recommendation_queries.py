@@ -1,13 +1,12 @@
 from pydantic import BaseModel
-import pymongo, os, bson
-from typing import List, Optional, Union
+import pymongo, os
 from bson.objectid import ObjectId
 
 
-dbhost = os.environ['MONGOHOST']
-dbname = os.environ['MONGODATABASE']
-dbuser = os.environ['MONGOUSER']
-dbpass = os.environ['MONGOPASSWORD']
+dbhost = os.environ["MONGOHOST"]
+dbname = os.environ["MONGODATABASE"]
+dbuser = os.environ["MONGOUSER"]
+dbpass = os.environ["MONGOPASSWORD"]
 
 mongo_str = f"mongodb://{dbuser}:{dbpass}@{dbhost}"
 
@@ -23,6 +22,7 @@ class RecommendIn(BaseModel):
     image_url: str
     url: str
 
+
 class RecommendOut(BaseModel):
     restaurant_name: str
     address: str
@@ -34,7 +34,9 @@ class RecommendOut(BaseModel):
 
 
 class RecommendQueries:
-    def set_recommendation(self, gathering_id, recommend: RecommendIn) -> RecommendOut:
+    def set_recommendation(
+        self, gathering_id, recommend: RecommendIn
+    ) -> RecommendOut:
         db = client[dbname]
         filter = {"_id": ObjectId(gathering_id)}
         newvalues = {"$set": {"recommendation": recommend.dict()}}
