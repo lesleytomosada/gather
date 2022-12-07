@@ -12,15 +12,15 @@ lint-test-job:
     - flake8 gatherings accounts
 
 # Run the unit tests
-gatherings-unit-test-job:
-  image: python:3-bullseye
-  stage: test
-  needs:
-    - lint-test-job
-  script:
-    - cd gatherings
-    - pip install -r requirements.txt
-    - python -m pytest
+# gatherings-unit-test-job:
+#   image: python:3-bullseye
+#   stage: test
+#   needs:
+#     - lint-test-job
+#   script:
+#     - cd gatherings
+#     - pip install -r requirements.txt
+#     - python -m pytest
 
 # Build the React/JavaScript front-end
 build-front-end-job:
