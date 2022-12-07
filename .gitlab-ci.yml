@@ -34,8 +34,8 @@ build-front-end-job:
     # You need to substitute in your real values for
     # GROUP_NAME, PROJECT_NAME, & WEBSERVICE_NAME below.
     PUBLIC_URL: https://seabeast.gitlab.io/gather/
-    REACT_APP_GATHERINGS_API_HOST: https://gatherings-api.onrender.com
-    REACT_APP_ACCOUNTS_API_HOST: https://accounts-api-s7f4.onrender.com
+    REACT_APP_GATHERINGS: https://gatherings-api.onrender.com
+    REACT_APP_ACCOUNTS: https://accounts-api-s7f4.onrender.com
   script:
     - cd ghi
     - npm install
