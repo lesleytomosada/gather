@@ -14,5 +14,7 @@ We had to hard code in data since we haven't decided which database to use yet. 
 
 Our to-dos for today:
 * Finalizing our API endpoints
-* Breaking down and assigning endpoints to members
+* Breaking down and assigning endpoints to each team member
 * Creating issues on our gitlab issue board
+
+We spent a lot of time today discussing the design of the site and reviewed it with James. We received feedback on our endpoints and were able to get them all written out how we expect our site to function. Once all of the endpoints were designed, we assigned each to a team member and will decide on if we are going to group code, partner code, or spend time working individually.
