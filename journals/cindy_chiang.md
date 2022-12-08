@@ -1,3 +1,18 @@
+## December 7, 2022
+Dear Diary,
+
+Today, I worked on:
+- CI/CD
+- unit tests
+
+The Seabeast team picked up from yesterday and met with Andrew to address our question about our render microservices not being able to create data due to unauthorized accounts after deployment. Andrew relayed that the issue we're noticing was expected as the token created from our render accounts microservice no longer shares the cookies with our second microservice. However, creating backend data could now be done via Mongo Express, if needed. With our deployment now successfully running and complete, we switched gears to unit tests.
+
+The Seabeast team discussed which endpoints and functions would be best to test. We decided to test and assigned the following unit tests: the get_cuisine (my test) and get_min_price (Daisy) in our gatherings recommendations routers and also to test the functions for get_all_gatherings (Lesley) and create_gathering (McKenzie) functions in our gatherings router. Because we wanted to run our unit tests locally, we learned that we needed to remove the +srv from all of our mongodb url paths in our queries files. We were still getting errors and Jason relayed to us that we needed an __init__.py file. Strangely, we were still getting errors, but learned that saving a file is key!
+
+For our unit tests relating to getting all gatherings and create gatherings, we were getting unathorized restrictions and realized that this was because the endpoints were restricted. Fortunately, we referred to the the example repo from learn and noticed that we could create a fake account to override the account authorization. When we started working on the create gatherings unit test, we started running into problems with setting up the datetime as it's not serializable. We posted in help me understand because we were having issues with converting the date because it was bounded within our GatheringIn class. Yesenia and Junella came to help us debug - we ended up modifying our json and creating our own object and that did the trick. Once we had the unit tests completed, we then updated our CI file to see if we could pass the pipeline. Unfortunately, we started getting KeyErrors for a SIGNING_KEY. Our friend Jon came to our rescue and pointed out to add the SIGNING_KEY to our gitlab CI/CD variables. However, we then started getting errors about MONGOHOST. Before going down a rabbithole, we posted another help me understand and Adrian came to our rescue. Following our last step, we added the rest of our environment variable and that was the winning solution! The last thing we fixed today was updating the gathering list component with getting the gathering detail link into a navlink. And with that, our application is running, functioning, and with no console errors! Definitely an uphill battle today, but with a lot of support and guidance, we reached code freeze!
+
+Later in the evening, Lesley noticed that we were now able to create duplicate accounts - oh dear! I realized that in the process of our deployment, the createIndex function was applied locally, but no longer to our deployed database. I happened to notice on Mongo Atlas that the collections had a button for creating an index. Doing a little bit of research, I was able to add the field of email as an option of unique. That worked and we are no longer able to create duplicate accounts (hooray)!
+
 ## December 6, 2022
 Dear Diary,
 
