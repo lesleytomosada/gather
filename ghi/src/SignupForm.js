@@ -69,7 +69,7 @@ function SignupForm() {
                             className="alert alert-danger mb-0 p-4 mt-4"
                             id="invalid-message"
                         >
-                            Uh-oh! You've entered an email already in use! Please log in or try again
+                            Uh-oh! You've entered an email already in use! Please log in or try again.
                         </div>
                     )}
                 </div>
