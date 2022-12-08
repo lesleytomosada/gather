@@ -9,11 +9,12 @@ Team:
 - Lesley Tomosada
 
 ## Design
-- [Wire-frame diagrams]
 - [API design](docs/api-design.md)
 - [Data Model](docs/data-model.md)
-- [GHI](docs/ghi.md)
+- [Diagrams](docs/diagrams.md)
 - [Integrations](docs/integrations.md)
+
+## Functionality
 
 
 ## Getting Started
