@@ -8,7 +8,7 @@ from bson.objectid import ObjectId
 from .preference_queries import PreferenceOut
 
 
-dbhost = os.environ['mongo']
+dbhost = os.environ["MONGOHOST"]
 dbname = os.environ["MONGODATABASE"]
 dbuser = os.environ["MONGOUSER"]
 dbpass = os.environ["MONGOPASSWORD"]
