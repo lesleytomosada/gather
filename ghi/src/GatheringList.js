@@ -172,7 +172,7 @@ const GatheringList = () => {
         return (
             <>
                 <h1>No Gatherings Yet!</h1>
-                <a href="/gathering/new">
+                <a href="/gather/gathering/new">
                     <button> Create a Gathering</button>
                 </a>
             </>
