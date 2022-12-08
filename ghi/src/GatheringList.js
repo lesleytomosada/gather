@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useAuthContext } from "./auth";
+import { NavLink } from "react-router-dom";
 
 const GatheringList = () => {
-  const [gatheringList, setGatheringList] = useState([]);
-  const { token } = useAuthContext();
+    const [gatheringList, setGatheringList] = useState([]);
+    const { token } = useAuthContext();
 
     useEffect(() => {
         async function fetchGatheringList() {
@@ -172,11 +173,14 @@ const GatheringList = () => {
         return (
             <>
                 <h1>No Gatherings Yet!</h1>
-                <a href="/gather/gathering/new">
+                <NavLink className="btn btn-primary" to="/gathering/new">
+                    Create a Gathering
+                </NavLink>
+                {/* <a href="/gather/gathering/new">
                     <button> Create a Gathering</button>
-                </a>
+                </a> */}
             </>
         );
     }
-}
+};
 export default GatheringList;
