@@ -70,7 +70,7 @@ function LoginForm() {
                             className="alert alert-danger mb-0 p-4 mt-4"
                             id="invalid-message"
                         >
-                            Uh-oh! You've entered an incorrect email and/or
+                            Oh dear! You've entered an incorrect email and/or
                             password. Please try again.
                         </div>
                     )}
