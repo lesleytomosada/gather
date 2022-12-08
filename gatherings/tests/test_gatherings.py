@@ -38,10 +38,13 @@ class CreateGatheringQueries:
 
 
 def test_create_gathering():
-    account = {"id": "123", "email": "hello@kitty.com"}
+    # account = {"id": "123", "email": "hello@kitty.com"}
+    # app.dependency_overrides[
+    #     authenticator.try_get_current_account_data
+    # ] = lambda: account
     app.dependency_overrides[
-        authenticator.try_get_current_account_data
-    ] = lambda: account
+        authenticator.get_current_account_data
+    ] = override_auth_user
     app.dependency_overrides[GatheringRepository] = CreateGatheringQueries
     json = {
         "name": "Test Party",
