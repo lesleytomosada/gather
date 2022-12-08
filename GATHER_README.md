@@ -23,12 +23,19 @@ Gather is an application designed for the indecisive and hungry. The application
 
 ## Design
 
-- [API design](docs/api-design.md)
+- [API Design](docs/api-design.md)
 - [Data Model](docs/data-model.md)
-- [Diagrams](docs/diagrams.md)
+- [Diagram & User Story](docs/diagrams.md)
 - [Integrations](docs/integrations.md)
 
 ## Functionality
+
+- Visitors to Gather must have an account and log in to use the site
+- Users can visit the Create a Gathering page to create their Gathering
+- After creation, the page will redirect to the Gathering's detail page
+- On the Gathering detail page, the user can add each individual's restaurant preferences for price and cuisine
+- Once a preference exists, the user can create a recommendation, which will return a suggested restaurant from the Yelp API
+- Users can view a list of all upcoming and past Gatherings at the Gathering List page
 
 ## Getting Started
 
