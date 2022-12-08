@@ -176,9 +176,6 @@ const GatheringList = () => {
                 <NavLink className="btn btn-primary" to="/gathering/new">
                     Create a Gathering
                 </NavLink>
-                {/* <a href="/gather/gathering/new">
-                    <button> Create a Gathering</button>
-                </a> */}
             </>
         );
     }
