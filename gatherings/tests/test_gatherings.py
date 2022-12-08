@@ -11,11 +11,18 @@ class EmptyGatheringRepository:
         return []
 
 
+def override_auth_user():
+    return []
+
+
 def test_get_all_gatherings():
-    account = {"id": "123", "email": "hello@kitty.com"}
+    # account = {"id": "123", "email": "hello@kitty.com"}
+    # app.dependency_overrides[
+    #     authenticator.try_get_current_account_data
+    # ] = lambda: account
     app.dependency_overrides[
-        authenticator.try_get_current_account_data
-    ] = lambda: account
+        authenticator.get_current_account_data
+    ] = override_auth_user
     app.dependency_overrides[GatheringRepository] = EmptyGatheringRepository
     response = client.get("/gathering")
     app.dependency_overrides = {}
