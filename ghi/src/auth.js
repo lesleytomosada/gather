@@ -116,6 +116,7 @@ export function useToken() {
         });
         if (response.ok) {
             await login(email, password);
+            return true;
         }
         return false;
     }

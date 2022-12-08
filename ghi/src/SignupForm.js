@@ -8,6 +8,7 @@ function SignupForm() {
     const [, , , signup] = useToken();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [invalid, setInvalid] = useState(false);
 
     const clearState = () => {
         setEmail("");
@@ -16,9 +17,13 @@ function SignupForm() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        signup(email, password);
-        navigate("/");
-        clearState();
+        const successful = await signup(email, password)
+        if (!successful) {
+            setInvalid(true);
+        } else {
+            clearState();
+            navigate("/");
+        }
     }
 
     return (
@@ -59,6 +64,14 @@ function SignupForm() {
                             <button className="btn btn-primary">Create</button>
                         </div>
                     </form>
+                    {invalid && (
+                        <div
+                            className="alert alert-danger mb-0 p-4 mt-4"
+                            id="invalid-message"
+                        >
+                            Uh-oh! You've entered an email already in use! Please log in or try again
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
