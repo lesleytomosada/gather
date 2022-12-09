@@ -1,7 +1,7 @@
 
 ## December 8, 2022
 Because we had all the issues solved last night in CI/CD. Today we focused on adding an alert for signing up frontend. If the email existing, it will pop up "You've entered an email already in use! Please log in or try again." It was not smoothy, because We forgot to put await in the async function that handle submit action.
-After fixing that, we were working on split up README.md. 
+After fixing that, we were working on split up README.md and looked for a CSS theme to use on our project.
 
 ## December 7, 2022
 After finishing standing ups in the morning, we asked help from Andrew about our render microservices not being able to create data due to unauthorized accounts after deployment. Andrew gave us a very sure answer that the token created from our render accounts microservice no longer shares the cookies with our second microservice. However, creating backend data could now be done via Mongo Express. Well, that answered all the questions! Then we switched gears to unit tests.
