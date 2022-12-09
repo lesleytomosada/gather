@@ -10,6 +10,15 @@ class EmptyGatheringRepository:
     def get_all(self, owner_id):
         return []
 
+    def get_one(self, gathering_id, owner_id):
+        result = {
+            "id": "kdsjghoq3usd",
+            "name": "Test Party",
+            "location": "Honolulu, HI",
+            "date": "2022-12-08T00:17:31",
+        }
+        return result
+
 
 def test_get_all_gatherings():
     account = {"id": "123", "email": "hello@kitty.com"}
@@ -21,6 +30,26 @@ def test_get_all_gatherings():
     app.dependency_overrides = {}
     assert response.status_code == 200
     assert response.json() == {"gatherings": []}
+
+
+def test_get_one_gathering():
+    expected = {
+        "id": "kdsjghoq3usd",
+        "name": "Test Party",
+        "location": "Honolulu, HI",
+        "date": "2022-12-08T00:17:31",
+        "preferences": None,
+        "recommendation": None,
+    }
+    account = {"id": "123", "email": "hello@kitty.com"}
+    app.dependency_overrides[
+        authenticator.try_get_current_account_data
+    ] = lambda: account
+    app.dependency_overrides[GatheringRepository] = EmptyGatheringRepository
+    response = client.get("/gathering/kdsjghoq3usd")
+    app.dependency_overrides = {}
+    assert response.status_code == 200
+    assert response.json() == expected
 
 
 class CreateGatheringQueries:

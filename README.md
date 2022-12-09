@@ -1,147 +1,59 @@
-# Module3 Project Gamma
+# Gather
 
-## Getting started
+Gather is an application designed for the indecisive and hungry. The application helps determine a restaurant based on provided cuisine and price point preferences. So gather around with Gather!
 
-You have a project repository, now what? The next section
-lists all of the deliverables that are due at the end of the
-week. Below is some guidance for getting started on the
-tasks for this week.
+### Team
 
-## Install Extensions
+- McKenzie Barker
+- Cindy Chiang
+- Daisy Song
+- Lesley Tomosada
 
-* Prettier: <https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode>
-* Black Formatter: <https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter>
+### Unit Tests
 
-## Deliverables
+#### Gatherings
 
-* [ ] Wire-frame diagrams
-* [ ] API documentation
-* [ ] Project is deployed to Render.com/GitLab-pages
-* [ ] GitLab issue board is setup and in use
-* [ ] Journals
+- Create a Gathering - McKenzie Barker
+- Get All Gatherings - Lesley Tomosada
+- Get One Gathering - Cindy Chiang
 
-## Project layout
+#### Preferences
 
-The layout of the project is just like all of the projects
-you did with `docker-compose` in module #2. You will create
-a directory in the root of the repository for each service
-that you add to your project just like those previous
-projects were setup.
+- Create Preference - Daisy Song
 
-### Directories
+## Design
 
-Several directories have been added to your project. The
-directories `docs` and `journals` are places for you and
-your team-mates to, respectively, put any documentation
-about your project that you create and to put your
-project-journal entries. See the _README.md_ file in each
-directory for more info.
+- [API Design](docs/api-design.md)
+- [Data Model](docs/data-model.md)
+- [Diagram & User Story](docs/diagrams.md)
+- [Integrations](docs/integrations.md)
 
-The other directories, `ghi` and `sample_service`, are
-sample services, that you can start building off of or use
-as a reference point.
+## Functionality
 
-Inside of `ghi` is a minimal React app that has an "under
-construction" page. It is setup similarly to all of the
-other React projects that you have worked on.
+- Visitors to Gather must have an account and log in to use the site.
+- Users can visit the Create a Gathering page to create their Gathering.
+- After creation, the page will redirect to the Gathering's detail page.
+- On the Gathering detail page, the user can add each individual's restaurant preferences for price and cuisine.
+- Once a preference exists, the user can create a recommendation, which will return a suggested restaurant from the Yelp API.
+- Users can view a list of all upcoming and past Gatherings at the Gathering List page.
 
-Inside of `sample_service` is a minimal FastAPI application.
-"Where are all the files?" you might ask? Well, the
-`main.py` file is the whole thing, and go take look inside
-of it... There's not even much in there..., hmm? That is
-FastAPI, we'll learn more about it in the coming days. Can
-you figure out what this little web-application does even
-though you haven't learned about FastAPI yet?
+## Getting Started
 
-Also in `sample_service` is a directory for your migrations.
-If you choose to use PostgreSQL, then you'll want to use
-migrations to control your database. Unlike Django, where
-migrations were automatically created for you, you'll write
-yours by hand using DDL. Don't worry about not knowing what
-DDL means; we have you covered. There's a sample migration
-in there that creates two tables so you can see what they
-look like.
+Please note the following directions to start the application:
 
-The sample Dockerfile and Dockerfile.dev run your migrations
-for you automatically.
+1.  Fork and clone from the repository https://gitlab.com/seabeast/gather.
+2.  Upon opening the repository, click the clone button and select "Clone with HTTPS".
+3.  Open a terminal and navigate to the directory where this application will be stored. To navigate to a directory, use the command `cd <<directory name>>`. If you need to make a new directory, use the command `mkdir <<directory name>>`.
+4.  Once you've navigated to the appropriate directory, execute the command `git clone` and paste the copied repository link.
+5.  Then enter `code .` to open the application in Visual Studio Code.
+6. Select the devBranch to be able to run locally by running the following command: `git checkout devBranch`.
+7.  Because this application will require the use of Docker, you'll need to execute the following commands in the terminal in this order:
 
-### Other files
+        docker volume create mongo-data
+        docker volume create account-data
+        docker-compose build
+        docker-compose up
 
-The following project files have been created as a minimal
-starting point. Please follow the guidance for each one for
-a most successful project.
+8.  To view the application, go to http://localhost:3000.
 
-* `docker-compose.yaml`: there isn't much in here, just a
-  **really** simple UI and FastAPI service. Add services
-  (like a database) to this file as you did with previous
-  projects in module #2.
-* `.gitlab-ci.yml`: This is your "ci/cd" file where you will
-  configure automated unit tests, code quality checks, and
-  the building and deployment of your production system.
-  Currently, all it does is deploy an "under construction"
-  page to your production UI on GitLab and a sample backend
-  to Render.com. We will learn much more about this file.
-* `.gitignore`: This is a file that prevents unwanted files
-  from getting added to your repository, files like
-  `pyc` files, `__pycache__`, etc. We've set it up so that
-  it has a good default configuration for Python projects.
-
-## How to complete the initial deploy
-
-There will be further guidance on completing the initial
-deployment, but it just consists of these steps:
-
-### Setup GitLab repo/project
-
-* make sure this project is in a group. If it isn't, stop
-  now and move it to a GitLab group
-* remove the fork relationship: In GitLab go to:
-  
-  Settings -> General -> Advanced -> Remove fork relationship
-
-* add these GitLab CI/CD variables:
-  * PUBLIC_URL : this is your gitlab pages URL
-  * SAMPLE_SERVICE_API_HOST: enter "blank" for now
-
-#### Your GitLab pages URL
-
-You can't find this in GitLab until after you've done a deploy
-but you can figure it out yourself from your GitLab project URL.
-
-If this is your project URL
-
-https://gitlab.com/GROUP_NAME/PROJECT_NAME
-
-then your GitLab pages URL will be
-
-https://GROUP_NAME.gitlab.io/PROJECT_NAME
-
-### Create render.com account and application
-
-* create account on render.com
-* one person create a group and invite all other members
-* create a new "Web Service"
-  * authenticate with GitLab and choose your project
-  * Enter fields:
-    * Name: name of your service
-    * Root Directory: the directory of your service in your git repo.
-      For this example use "sample_service".
-    * Environment: Docker
-    * Plan Type: Free
-  * click the "Create Web Service" button to create it
-  * the build will succeed and it will look like the server is running,
-    most likely, in 6-10 minutes, it will fail.
-  * click "Manual Deploy" -> "Deploy latest commit" and the service
-    should deploy successfully.
-
-### Update GitLab CI/CD variables
-
-Copy the service URL for your new render.com service and then paste
-that into the value for the SAMPLE_SERVICE_API_HOST CI/CD variable
-in GitLab.
-
-### Deploy it
-
-Merge a change into main to kick off the initial deploy. Once the build pipeline
-finishes you should be able to see an "under construction" page on your GitLab
-pages site.
+// Note: When you run `docker-compose up` and if you're on macOS, you will see a warning about an environment variable named OS being missing. You can safely ignore this.
