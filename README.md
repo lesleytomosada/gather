@@ -13,13 +13,13 @@ Gather is an application designed for the indecisive and hungry. The application
 
 #### Gatherings
 
-- Create a Gathering - McKenzie Barker
+- Create a Gathering - Daisy Song
 - Get All Gatherings - Lesley Tomosada
 - Get One Gathering - Cindy Chiang
 
 #### Preferences
 
-- Create Preference - Daisy Song
+- Create Preference - McKenzie Barker
 
 ## Design
 
