@@ -2,7 +2,7 @@ export default function MainPage() {
   return (
     <>
       <h1 className="px-4 my-1 mt-5 mb-3 display-5 text-center">
-        GATHER AROUND!
+        Welcome to Gather!
       </h1>
       <div
         id="carouselExampleControls"
@@ -17,13 +17,27 @@ export default function MainPage() {
               alt="..."
             />
           </div>
-          {/* <div class="carousel-item">
+          <div class="carousel-item">
             <img
               src="https://images.pexels.com/photos/262918/pexels-photo-262918.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               class="d-block w-100"
               alt="..."
-            /> */}
-          {/* </div> */}
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+              src="https://images.pexels.com/photos/5718027/pexels-photo-5718027.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              className="d-block w-100"
+              alt="..."
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+              src="https://images.pexels.com/photos/7772194/pexels-photo-7772194.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              className="d-block w-100"
+              alt="..."
+            />
+          </div>
           <div className="carousel-item">
             <img
               src="https://images.pexels.com/photos/2074130/pexels-photo-2074130.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"

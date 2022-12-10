@@ -1,3 +1,13 @@
+## December 8, 2022
+Dear Diary,
+
+Today, I worked on:
+- Sign-up component
+- README
+- CSS
+
+The Seabeast team began testing our application to make sure everything is working and running smoothly. In the process, we added an error for our sign-up page when duplicate accounts are created. Additionally, McKenzie helped update our gathering detail component to hide the recommend a restaurant button until at least one preference was submitted to the gathering. We discussed what we wanted to include in the README and split up the sections to complete amongst the team. We then split into working on our individual sections and cleaning up some of our application files. We noticed that our application wasn't working and there were some deploy issues from the Render side of things. We realized and through other comments of our cohort mates that the Render site was down. Lesley and I decided to breakoff from the team and try to explore a CSS template that McKenzie found and shared with us. Lesley created a CSS branch and then showed me that we could import the css file into our App.js file. This brought in some of the CSS design and styles that we then futher explored. We learned that to make an input box more round, the CSS styling is border-radius! We re-grouped with the team afterwards to share our learning! Tomorrow, we'll plan to re-group and figure out how to tackle some CSS styling!
+
 ## December 7, 2022
 Dear Diary,
 
