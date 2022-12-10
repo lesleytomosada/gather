@@ -81,7 +81,7 @@ const GatheringDetail = () => {
                 src={recommendation?.image_url}
                 alt="recommended restaurant"
               />
-              <p>
+              <p className="pb-5 mt-4 mb-5">
                 <button onClick={getRecommendation}>
                   Suggest Something Else!
                 </button>

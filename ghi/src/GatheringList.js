@@ -26,7 +26,7 @@ const GatheringList = () => {
       <div>
         <h1>Upcoming Gatherings</h1>
 
-        <table className="table table-striped mt-4 table-hover">
+        <table className="table mt-4">
           <thead>
             <tr>
               <th>Gathering Name</th>
