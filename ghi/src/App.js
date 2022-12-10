@@ -40,6 +40,9 @@ function App() {
             </Route>
           </Routes>
         </div>
+        <div className="mt-5 footer">
+          <p className="mt-3">Seabeast 2022</p>
+        </div>
       </AuthProvider>
     </BrowserRouter>
   );
