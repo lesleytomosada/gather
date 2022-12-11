@@ -54,7 +54,7 @@ const GatheringDetail = () => {
         <>
           <div className="my-5 container text-center">
             <h1 className="mt-5 my-5 mb-5 display-6 text-center">
-              Oops! FOMO is real, but that's nacho your gathering!
+              Hold please! FOMO is real, but that's nacho your gathering!
             </h1>
             <img
               classname="d-block w-100 center"

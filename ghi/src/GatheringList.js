@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useAuthContext } from "./auth";
 import { NavLink } from "react-router-dom";
+import star from "./stars";
+import { reverseCuisines } from "./ReverseCuisines";
 
 const GatheringList = () => {
   const [gatheringList, setGatheringList] = useState([]);
@@ -25,16 +27,16 @@ const GatheringList = () => {
     return (
       <div className="px-4 py-5 my-1 text-center">
         <h1 className="display-5">Upcoming Gatherings</h1>
-        <table className="table mt-4">
+        <table className="table my-4">
           <thead>
             <tr>
               <th className="lead">Gathering Name</th>
               <th className="lead">Gathering Location</th>
               <th className="lead">Gathering Date</th>
-              <th className="lead">Restaurant Name</th>
-              <th className="lead">Restaurant Address</th>
-              <th className="lead">Restaurant Cuisine</th>
-              <th className="lead">Restaurant Rating</th>
+              <th className="lead">Recommendation Name</th>
+              <th className="lead">Recommendation Address</th>
+              <th className="lead">Recommendation Cuisine</th>
+              <th className="lead">Recommendation Rating</th>
             </tr>
           </thead>
           <tbody>
@@ -53,30 +55,40 @@ const GatheringList = () => {
                       {new Date(gathering.date + "Z").toLocaleTimeString()}
                     </td>
                     <td>
-                      {" "}
                       <a href={gathering.recommendation?.url}>
                         {gathering.recommendation?.restaurant_name}
                       </a>
                     </td>
                     <td>{gathering.recommendation?.address}</td>
-                    <td>{gathering.recommendation?.cuisine}</td>
-                    <td>{gathering.recommendation?.rating}</td>
+                    <td>
+                      {reverseCuisines[gathering.recommendation?.cuisine]}
+                    </td>
+                    {gathering.recommendation ? (
+                      <td>
+                        <img
+                          src={star[gathering.recommendation?.rating]}
+                          alt="rating"
+                        ></img>
+                      </td>
+                    ) : (
+                      <td></td>
+                    )}
                   </tr>
                 );
               })}
           </tbody>
         </table>
-        <h1 className="display-5">Gatherings History</h1>
+        <h1 className="mt-3 display-5">Gatherings History</h1>
         <table className="table">
           <thead>
             <tr>
               <th className="lead">Gathering Name</th>
               <th className="lead">Gathering Location</th>
               <th className="lead">Gathering Date</th>
-              <th className="lead">Restaurant Name</th>
-              <th className="lead">Restaurant Address</th>
-              <th className="lead">Restaurant Cuisine</th>
-              <th className="lead">Restaurant Rating</th>
+              <th className="lead">Recommendation Name</th>
+              <th className="lead">Recommendation Address</th>
+              <th className="lead">Recommendation Cuisine</th>
+              <th className="lead">Recommendation Rating</th>
             </tr>
           </thead>
           <tbody>
@@ -90,9 +102,9 @@ const GatheringList = () => {
                     </td>
                     <td>{gathering.location}</td>
                     <td>
-                      {new Date(gathering.date).toLocaleDateString()}
+                      {new Date(gathering.date + "Z").toLocaleDateString()}
                       &nbsp;
-                      {new Date(gathering.date).toLocaleTimeString()}
+                      {new Date(gathering.date + "Z").toLocaleTimeString()}
                     </td>
                     <td>
                       <a href={gathering.recommendation?.url}>
@@ -100,8 +112,19 @@ const GatheringList = () => {
                       </a>
                     </td>
                     <td>{gathering.recommendation?.address}</td>
-                    <td>{gathering.recommendation?.cuisine}</td>
-                    <td>{gathering.recommendation?.rating}</td>
+                    <td>
+                      {reverseCuisines[gathering.recommendation?.cuisine]}
+                    </td>
+                    {gathering.recommendation ? (
+                      <td>
+                        <img
+                          src={star[gathering.recommendation?.rating]}
+                          alt="rating"
+                        ></img>
+                      </td>
+                    ) : (
+                      <td></td>
+                    )}
                   </tr>
                 );
               })}
