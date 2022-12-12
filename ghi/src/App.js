@@ -11,6 +11,7 @@ import "./App.css";
 import "./theme.css";
 import { AuthProvider, useToken } from "./auth";
 import CB from "./assets/CB.png";
+import ST from "./assets/ST.png";
 
 const domain = /https:\/\/[^/]+/;
 const basename = process.env.PUBLIC_URL.replace(domain, "");
@@ -44,7 +45,7 @@ function App() {
         <div className="mt-5 footer">
           <div className="mt-3 container">
           </div>
-          <img src="/public/CB.png" alt="" height="10%" width="10%" />
+          <img src={ ST } alt="" height="10%" width="10%" />
           Seabeast 2022
           <img src={ CB } alt="" height="10%" width="10%" />
         </div>

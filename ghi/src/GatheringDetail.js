@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuthContext } from "./auth";
+import GatheringFriends from "./assets/GatheringFriends.png";
 
 
 const GatheringDetail = () => {
@@ -61,7 +62,7 @@ const GatheringDetail = () => {
               classname="d-block w-100 center"
               height="500px"
               width="auto"
-              src="/public/GatheringFriends.jpg"
+              src={ GatheringFriends }
               alt=""
             />
           </div>
