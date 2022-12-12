@@ -41,7 +41,18 @@ function App() {
           </Routes>
         </div>
         <div className="mt-5 footer">
-          <p className="mt-3">Seabeast 2022</p>
+          <div className="mt-3 container">
+            {/* <div className="row">
+              <div className="col">sushi</div>
+              <div className="col">pizza</div>
+              <div className="col">Seabeast 2022</div>
+              <div className="col">soup</div>
+              <div className="col">pizza</div> */}
+          </div>
+          <img src="/CB.png" alt="" height="10%" width="10%" />
+          Seabeast 2022
+          <img src="/ST.png" alt="" height="10%" width="10%" />
+          {/* </div> */}
         </div>
       </AuthProvider>
     </BrowserRouter>

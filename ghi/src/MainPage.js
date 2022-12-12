@@ -10,7 +10,7 @@ const MainPage = () => {
         <h1 className="px-4 my-1 mt-5 mb-3 display-5 text-center">
           Welcome to Gather!
         </h1>
-        <p className="text-center lead">New here? Let's get started!</p>
+        <p className="text-center lead">Let's get started!</p>
         <div className="text-center mb-3">
           <NavLink className="btn btn-primary" to="/gathering/new">
             Create a Gathering

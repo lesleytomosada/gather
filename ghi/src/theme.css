@@ -399,7 +399,7 @@ h6,
 .h5,
 .h6 {
   margin-bottom: 0.5rem;
-  font-weight: 500;
+  /* font-weight: 500; */
   line-height: 1.2;
   color: #333333;
 }
@@ -430,7 +430,7 @@ h2,
 
 h3,
 .h3 {
-  font-size: 1.75rem;
+  /* font-size: 1.75rem; */
 }
 
 @media (max-width: 1200px) {
@@ -4807,12 +4807,10 @@ input[type="button"].btn-block {
   position: relative;
   display: flex;
   flex-direction: column;
-  min-width: 0;
   word-wrap: break-word;
-  background-color: rgb(212, 45, 45);
+  background-color: #f3f6fe;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 5px;
 }
 
 .card > hr {

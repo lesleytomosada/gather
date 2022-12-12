@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuthContext } from "./auth";
+import star from "./stars";
+import { reverseCuisines } from "./ReverseCuisines";
 
 const GatheringDetail = () => {
   const [gathering, setGathering] = useState({});
@@ -67,40 +69,68 @@ const GatheringDetail = () => {
         </>
       ) : (
         <>
-          <h1 className="display-4 fw-bold text-center">Your Gathering</h1>
-          <h2>{gathering.name}</h2>
-          {new Date(gathering.date + "Z").toLocaleDateString()}&nbsp;
-          {new Date(gathering.date + "Z").toLocaleTimeString()}
-          <h3>{gathering.location}</h3>
-          {recommendation ? (
-            <>
-              <h3>{recommendation?.restaurant_name}</h3>
-              <h3>{recommendation?.address}</h3>
-              <img
-                style={{ width: "50%", height: "50%" }}
-                src={recommendation?.image_url}
-                alt="recommended restaurant"
-              />
-              <p className="pb-5 mt-4 mb-5">
-                <button onClick={getRecommendation}>
-                  Suggest Something Else!
-                </button>
-              </p>
-            </>
-          ) : (
-            <>
-              <p>
-                <button onClick={navToPreference}>Add a preference</button>
-              </p>
-              <p>
-                {gathering.preferences ? (
-                  <button onClick={getRecommendation}>
-                    Get Recommendation
+          {/* <div className="card shadow p-4 mt-4"> */}
+          <div className="px-4 py-5 my-1 text-center">
+            <h1 className="display-4 text-center mb-0">{gathering.name}</h1>
+            <p className="text-center lead">
+              on {new Date(gathering.date + "Z").toLocaleDateString()}&nbsp;
+              {new Date(gathering.date + "Z").toLocaleTimeString()}
+            </p>
+            <p className="lead">Location: {gathering.location}</p>
+            {recommendation ? (
+              <>
+                <p className="display-6">Let's Eat!</p>
+                <p className="display-6">
+                  <a href={gathering.recommendation?.url}>
+                    {recommendation?.restaurant_name}
+                  </a>
+                </p>
+                {/* <p className="lead">
+                  {reverseCuisines[gathering.recommendation?.cuisine]}
+                </p>
+                <img
+                  className="mb-3"
+                  src={star[gathering.recommendation?.rating]}
+                  alt="rating"
+                ></img> */}
+                <p className="lead">{recommendation?.address}</p>
+
+                <img
+                  style={{ width: "50%", height: "50%" }}
+                  src={recommendation?.image_url}
+                  alt="recommended restaurant"
+                />
+                <p className="pb-5 mt-4 mb-5">
+                  <button
+                    className="btn btn-primary"
+                    onClick={getRecommendation}
+                  >
+                    Suggest Something Else!
                   </button>
-                ) : null}
-              </p>
-            </>
-          )}
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="display-6">Let's Decide Where to Eat!</p>
+                <p>
+                  <button className="btn btn-primary" onClick={navToPreference}>
+                    Add a preference
+                  </button>
+                </p>
+                <p>
+                  {gathering.preferences ? (
+                    <button
+                      className="btn btn-primary"
+                      onClick={getRecommendation}
+                    >
+                      Get Recommendation
+                    </button>
+                  ) : null}
+                </p>
+              </>
+            )}
+          </div>
+          {/* </div> */}
         </>
       )}
     </>
