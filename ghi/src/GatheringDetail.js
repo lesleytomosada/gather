@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuthContext } from "./auth";
-import star from "./stars";
-import { reverseCuisines } from "./ReverseCuisines";
+
 
 const GatheringDetail = () => {
   const [gathering, setGathering] = useState({});
@@ -69,7 +68,6 @@ const GatheringDetail = () => {
         </>
       ) : (
         <>
-          {/* <div className="card shadow p-4 mt-4"> */}
           <div className="px-4 py-5 my-1 text-center">
             <h1 className="display-4 text-center mb-0">{gathering.name}</h1>
             <p className="text-center lead">
@@ -85,14 +83,6 @@ const GatheringDetail = () => {
                     {recommendation?.restaurant_name}
                   </a>
                 </p>
-                {/* <p className="lead">
-                  {reverseCuisines[gathering.recommendation?.cuisine]}
-                </p>
-                <img
-                  className="mb-3"
-                  src={star[gathering.recommendation?.rating]}
-                  alt="rating"
-                ></img> */}
                 <p className="lead">{recommendation?.address}</p>
 
                 <img
@@ -130,7 +120,6 @@ const GatheringDetail = () => {
               </>
             )}
           </div>
-          {/* </div> */}
         </>
       )}
     </>
