@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useAuthContext } from "./auth";
 import { NavLink } from "react-router-dom";
+import star from "./stars";
+import { reverseCuisines } from "./ReverseCuisines";
 
 const GatheringList = () => {
   const [gatheringList, setGatheringList] = useState([]);
@@ -23,20 +25,18 @@ const GatheringList = () => {
   }, [token]);
   if (gatheringList.length > 0) {
     return (
-      <div>
-        <h1>Upcoming Gatherings</h1>
-
-        <table className="table table-striped mt-4 table-hover">
+      <div className="px-4 py-5 my-1 text-center">
+        <h1 className="display-5">Upcoming Gatherings</h1>
+        <table className="table my-4">
           <thead>
             <tr>
-              <th>Gathering Name</th>
-              <th>Gathering Location</th>
-              <th>Gathering Date</th>
-              <th>Restaurant Name</th>
-              <th>Restaurant Address</th>
-              <th>Restaurant Cuisine</th>
-              <th>Restaurant Rating</th>
-              <th>Restaurant Yelp Site</th>
+              <th className="lead">Gathering Name</th>
+              <th className="lead">Gathering Location</th>
+              <th className="lead">Gathering Date</th>
+              <th className="lead">Recommendation Name</th>
+              <th className="lead">Recommendation Address</th>
+              <th className="lead">Recommendation Cuisine</th>
+              <th className="lead">Recommendation Rating</th>
             </tr>
           </thead>
           <tbody>
@@ -54,32 +54,41 @@ const GatheringList = () => {
                       &nbsp;
                       {new Date(gathering.date + "Z").toLocaleTimeString()}
                     </td>
-                    <td>{gathering.recommendation?.restaurant_name}</td>
-                    <td>{gathering.recommendation?.address}</td>
-                    <td>{gathering.recommendation?.cuisine}</td>
-                    <td>{gathering.recommendation?.rating}</td>
                     <td>
                       <a href={gathering.recommendation?.url}>
-                        {gathering.recommendation?.url}
+                        {gathering.recommendation?.restaurant_name}
                       </a>
                     </td>
+                    <td>{gathering.recommendation?.address}</td>
+                    <td>
+                      {reverseCuisines[gathering.recommendation?.cuisine]}
+                    </td>
+                    {gathering.recommendation ? (
+                      <td>
+                        <img
+                          src={star[gathering.recommendation?.rating]}
+                          alt="rating"
+                        ></img>
+                      </td>
+                    ) : (
+                      <td></td>
+                    )}
                   </tr>
                 );
               })}
           </tbody>
         </table>
-        <h1>Gatherings History</h1>
-        <table className="table table-striped mt-4 table-hover">
+        <h1 className="mt-3 display-5">Gatherings History</h1>
+        <table className="table">
           <thead>
             <tr>
-              <th>Gathering Name</th>
-              <th>Gathering Location</th>
-              <th>Gathering Date</th>
-              <th>Restaurant Name</th>
-              <th>Restaurant Address</th>
-              <th>Restaurant Cuisine</th>
-              <th>Restaurant Rating</th>
-              <th>Restaurant Yelp Site</th>
+              <th className="lead">Gathering Name</th>
+              <th className="lead">Gathering Location</th>
+              <th className="lead">Gathering Date</th>
+              <th className="lead">Recommendation Name</th>
+              <th className="lead">Recommendation Address</th>
+              <th className="lead">Recommendation Cuisine</th>
+              <th className="lead">Recommendation Rating</th>
             </tr>
           </thead>
           <tbody>
@@ -93,19 +102,29 @@ const GatheringList = () => {
                     </td>
                     <td>{gathering.location}</td>
                     <td>
-                      {new Date(gathering.date).toLocaleDateString()}
+                      {new Date(gathering.date + "Z").toLocaleDateString()}
                       &nbsp;
-                      {new Date(gathering.date).toLocaleTimeString()}
+                      {new Date(gathering.date + "Z").toLocaleTimeString()}
                     </td>
-                    <td>{gathering.recommendation?.restaurant_name}</td>
-                    <td>{gathering.recommendation?.address}</td>
-                    <td>{gathering.recommendation?.cuisine}</td>
-                    <td>{gathering.recommendation?.rating}</td>
                     <td>
                       <a href={gathering.recommendation?.url}>
-                        {gathering.recommendation?.url}
+                        {gathering.recommendation?.restaurant_name}
                       </a>
                     </td>
+                    <td>{gathering.recommendation?.address}</td>
+                    <td>
+                      {reverseCuisines[gathering.recommendation?.cuisine]}
+                    </td>
+                    {gathering.recommendation ? (
+                      <td>
+                        <img
+                          src={star[gathering.recommendation?.rating]}
+                          alt="rating"
+                        ></img>
+                      </td>
+                    ) : (
+                      <td></td>
+                    )}
                   </tr>
                 );
               })}
@@ -116,10 +135,12 @@ const GatheringList = () => {
   } else {
     return (
       <>
-        <h1>No Gatherings Yet!</h1>
-        <NavLink className="btn btn-primary" to="/gathering/new">
-          Create a Gathering
-        </NavLink>
+        <div className="my-5 text-center">
+          <h1 className="mb-3 display-5">No Gatherings Yet!</h1>
+          <NavLink className="btn btn-primary" to="/gathering/new">
+            Create a Gathering
+          </NavLink>
+        </div>
       </>
     );
   }

@@ -13,7 +13,7 @@ dbname = os.environ["MONGODATABASE"]
 dbuser = os.environ["MONGOUSER"]
 dbpass = os.environ["MONGOPASSWORD"]
 
-mongo_str = f"mongodb+srv://{dbuser}:{dbpass}@{dbhost}"
+mongo_str = f"mongodb://{dbuser}:{dbpass}@{dbhost}"
 
 client = pymongo.MongoClient(mongo_str)
 
@@ -60,7 +60,7 @@ class GatheringRepository:
         props = data.dict()
         props["owner_id"] = owner_id
         result = db.gatherings.insert_one(props)
-        print('date :', data.date)
+        print("date :", data.date)
         if result.inserted_id:
             result = self.get_one(result.inserted_id, owner_id)
             result["id"] = str(result["id"])
