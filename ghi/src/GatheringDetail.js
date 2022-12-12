@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuthContext } from "./auth";
-import GatheringFriends from "./assets/GatheringFriends.png";
+import GatheringFriends from "./assets/GatheringFriends.jpg";
 
 
 const GatheringDetail = () => {
