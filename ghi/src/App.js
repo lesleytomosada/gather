@@ -49,9 +49,9 @@ function App() {
               <div className="col">soup</div>
               <div className="col">pizza</div> */}
           </div>
-          <img src="/CB.png" alt="" height="10%" width="10%" />
+          <img src="/public/CB.png" alt="" height="10%" width="10%" />
           Seabeast 2022
-          <img src="/ST.png" alt="" height="10%" width="10%" />
+          <img src="/public/ST.png" alt="" height="10%" width="10%" />
           {/* </div> */}
         </div>
       </AuthProvider>

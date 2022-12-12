@@ -61,7 +61,7 @@ const GatheringDetail = () => {
               classname="d-block w-100 center"
               height="500px"
               width="auto"
-              src="/GatheringFriends.jpg"
+              src="/public/GatheringFriends.jpg"
               alt=""
             />
           </div>

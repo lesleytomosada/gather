@@ -1,5 +1,5 @@
 const star = {
-  0: "/regular_0.png",
+  0: "/public/regular_0.png",
   1: "/regular_1.png",
   1.5: "/regular_1_half.png",
   2: "/regular_2.png",
