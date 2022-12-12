@@ -1,3 +1,6 @@
+## Thursday, December 9, 2022
+We had our code demo and signoff today and passed! Fin!
+
 ## Thursday, December 8, 2022
 We added an error to our sign up page in the event of a duplicate key error. I updated the gathering detail page to only show the recommend button once there is at least one preference. We all worked on separate parts of our readme file and cleaned up the extra readme's that we aren't using. Then we ran into issues with Render being down and decided to take a coding break and work on journals, tidying up our task list on gitlab, and looked for a CSS theme to use on our project.
 
