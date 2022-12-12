@@ -8,43 +8,55 @@ import GatheringList from "./GatheringList";
 import PreferenceForm from "./PreferenceForm";
 import MainPage from "./MainPage";
 import "./App.css";
+import "./theme.css";
 import { AuthProvider, useToken } from "./auth";
 
 const domain = /https:\/\/[^/]+/;
 const basename = process.env.PUBLIC_URL.replace(domain, "");
 
 function GetToken() {
-    useToken();
-    return null;
+  useToken();
+  return null;
 }
 
 function App() {
-    return (
-        <BrowserRouter basename={basename}>
-            <AuthProvider>
-                <GetToken />
-                <Nav />
-                <div className="container">
-                    <Routes>
-                        <Route path="/" element={<MainPage />} />
-                        <Route path="login" element={<LoginForm />} />
-                        <Route path="signup" element={<SignupForm />} />
-                        <Route path="gathering/">
-                            <Route path="new" element={<GatheringForm />} />
-                            <Route path="list" element={<GatheringList />} />
-                            <Route path=":gathering_id">
-                                <Route path="" element={<GatheringDetail />} />
-                                <Route
-                                    path="preference"
-                                    element={<PreferenceForm />}
-                                />
-                            </Route>
-                        </Route>
-                    </Routes>
-                </div>
-            </AuthProvider>
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter basename={basename}>
+      <AuthProvider>
+        <GetToken />
+        <Nav />
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="login" element={<LoginForm />} />
+            <Route path="signup" element={<SignupForm />} />
+            <Route path="gathering/">
+              <Route path="new" element={<GatheringForm />} />
+              <Route path="list" element={<GatheringList />} />
+              <Route path=":gathering_id">
+                <Route path="" element={<GatheringDetail />} />
+                <Route path="preference" element={<PreferenceForm />} />
+              </Route>
+            </Route>
+          </Routes>
+        </div>
+        <div className="mt-5 footer">
+          <div className="mt-3 container">
+            {/* <div className="row">
+              <div className="col">sushi</div>
+              <div className="col">pizza</div>
+              <div className="col">Seabeast 2022</div>
+              <div className="col">soup</div>
+              <div className="col">pizza</div> */}
+          </div>
+          <img src="/CB.png" alt="" height="10%" width="10%" />
+          Seabeast 2022
+          <img src="/ST.png" alt="" height="10%" width="10%" />
+          {/* </div> */}
+        </div>
+      </AuthProvider>
+    </BrowserRouter>
+  );
 }
 
 export default App;

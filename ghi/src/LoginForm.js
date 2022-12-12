@@ -31,8 +31,8 @@ function LoginForm() {
     <div className="row">
       <div className="offset-3 col-6">
         <div className="shadow p-4 mt-4">
-          <h1 className="text-left">Login</h1>
-          <div className="text-left">
+          <h1 className="text-left display-6">Login</h1>
+          <div className="text-left mb-3 lead">
             Don't have an account?
             <NavLink to="/signup"> Create account</NavLink>
           </div>

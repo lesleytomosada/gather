@@ -30,8 +30,8 @@ function SignupForm() {
     <div className="row">
       <div className="offset-3 col-6">
         <div className="shadow p-4 mt-4">
-          <h1 className="text-left">Create account</h1>
-          <div className="text-left">
+          <h1 className="text-left display-6">Create account</h1>
+          <div className="text-left lead mb-3">
             Already have an account?
             <NavLink to="/login"> Login</NavLink>
           </div>
