@@ -1,3 +1,8 @@
+## December 9, 2022
+Dear Diary,
+
+Today, we demo'd our project to Andrew for project assessment/grading. On our first demo, our MVP and project requirements were complete and good with the exception of two of our unit tests. Andrew noted our unit tests needed to specifically test our FastAPI endpoints. So, we discarded our unit tests for get_min_price and get_cuisine and reviewed other endpoints that we could create. Since Lesley and Daisy finished their unit tests for get_all_gatherings and create_gathering, McKenzie and I each wrote a new unit test: mine was for get_one_gathering and McKenzie created a unit test for create_preference. Once both of our unit tests were passing, we invited Andrew to return for a second demo to wrap up our project assessment. And we passed! Hooray! We spent the rest of the day testing out some CSS styling. What a great feeling and great way to start the weekend!
+
 ## December 8, 2022
 Dear Diary,
 
