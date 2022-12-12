@@ -43,11 +43,10 @@ function App() {
           </Routes>
         </div>
         <div className="mt-5 footer">
-          <div className="mt-3 container">
-          </div>
-          <img src={ ST } alt="" height="10%" width="10%" />
+          <div className="mt-3 container"></div>
+          <img src={CB} alt="" height="10%" width="10%" />
           Seabeast 2022
-          <img src={ CB } alt="" height="10%" width="10%" />
+          <img src={ST} alt="" height="10%" width="10%" />
         </div>
       </AuthProvider>
     </BrowserRouter>
