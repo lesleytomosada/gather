@@ -10,7 +10,7 @@ import MainPage from "./MainPage";
 import "./App.css";
 import "./theme.css";
 import { AuthProvider, useToken } from "./auth";
-import CB from ".assets/CB.png";
+import CB from "./assets/CB.png";
 
 const domain = /https:\/\/[^/]+/;
 const basename = process.env.PUBLIC_URL.replace(domain, "");
