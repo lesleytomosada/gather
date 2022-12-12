@@ -1,3 +1,5 @@
+## December 9, 2022
+Today, On our first demo to Andrew, our MVP and project requirements were complete. But Andrew noted our unit tests needed to specifically test our FastAPI endpoints. So, we decides to delete our unit tests for get_min_price and get_cuisine and reviewed other endpoints that we could create. Cindy created get_one_gathering and McKenzie created a unit test for create_preference. After Andrew was reviewing, both unit tests were passing. We spent the rest of the day testing out some CSS styling. 
 
 ## December 8, 2022
 Because we had all the issues solved last night in CI/CD. Today we focused on adding an alert for signing up frontend. If the email existing, it will pop up "You've entered an email already in use! Please log in or try again." It was not smoothy, because We forgot to put await in the async function that handle submit action.
